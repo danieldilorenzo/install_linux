@@ -18,6 +18,7 @@ Olá! Este aqui é meu pequeno repositório com tutoriais criados por mim para m
 
 ___
 
-[![Home](https://img.shields.io/badge/🏠%20Go%20to%20home-teal?style=flat-square&logoColor=white&link=https://github.com/danieldilorenzo)](https://github.com/danieldilorenzo)
+<!--[![Home](https://img.shields.io/badge/🏠%20Go%20to%20home-teal?style=flat-square&logoColor=white&link=https://github.com/danieldilorenzo)](https://github.com/danieldilorenzo)-->
+[![Home](https://img.shields.io/badge/Go%20to%20home-teal?style=flat-square&logo=Google-Home&logoColor=white&link=https://github.com/danieldilorenzo)](https://github.com/danieldilorenzo)
 
 
