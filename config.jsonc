@@ -27,10 +27,6 @@
             "type": "kernel"
         },
         {
-            "key": "{$2}{#32}• uptime   ",
-            "type": "uptime"
-        },
-        {
             "key": "{$2}{#33}• distro   ",
             "type": "os"
         },
