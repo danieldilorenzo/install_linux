@@ -1,7 +1,7 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        "type": "small",
+        //"type": "small",
         "padding": {
             "top": 1,
             "right": 2
@@ -22,13 +22,13 @@
             "format": "{#1}{#keys}╔{$1}╗\u001b[76D {user-name-colored}{at-symbol-colored}{host-name-colored} 💻 ",
             "type": "title"
         },
+         {
+            "key": "{$2}{#33}• distro   ",
+            "type": "os"
+        },
         {
             "key": "{$2}{#31}• kernel   ",
             "type": "kernel"
-        },
-        {
-            "key": "{$2}{#33}• distro   ",
-            "type": "os"
         },
         {
             "key": "{$2}{#34}• desktop  ",
@@ -70,7 +70,7 @@
             "type": "custom"
         },
         {
-            "key": "{$2}{#39} colors   ",
+            "key": "{$2}{#39}• colors   ",
             "type": "colors",
             "symbol": "circle"
         },
