@@ -6,7 +6,7 @@ Olá! Este aqui é meu pequeno repositório com tutoriais criados por mim para m
 
 <br>
 
-[![openSUSE](https://img.shields.io/badge/openSUSE%20Tumbleweed-%2364B345?style=flat-square&logo=openSUSE&logoColor=white&link=https://get.opensuse.org/tumbleweed/)](https://get.opensuse.org/tumbleweed/)
+[![openSUSE](https://img.shields.io/badge/openSUSE%20Tumbleweed-%2364B345?style=flat-square&logo=openSUSE&logoColor=white&link=hhttps://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md)](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md)
 
 [![Fedora](https://img.shields.io/badge/Fedora%20KDE-294172?style=flat-square&logo=fedora&logoColor=white&link=https://fedoraproject.org/)](https://fedoraproject.org/)
 [![Fedora](https://img.shields.io/badge/Fedora%20GNOME-294172?style=flat-square&logo=fedora&logoColor=white&link=https://fedoraproject.org/)](https://fedoraproject.org/)
