@@ -26,7 +26,7 @@
 
 ### Instalar ZSH
 
-> sudo zypper in zsh util-linux-user git
+> sudo zypper in zsh git
 >
 > sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
