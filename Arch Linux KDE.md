@@ -197,7 +197,6 @@ Descomentar todos e colar em
 
 ### Instalar Plugins
 
-
 >cd .oh-my-zsh/plugins
 
 >git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git  && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
@@ -218,11 +217,11 @@ Descomentar todos e colar em
 
 ## Instalar Fish
 
-sudo pacman -S fish
+>sudo pacman -S fish
 
 # Instalar Tide (prompt melhor para o Fish)
 
-set -l _tide_tmp_dir (command mktemp -d) curl https://codeload.github.com/ilancosman/tide/tar.gz v6 | tar -xzC $_tide_tmp_dir command cp -R $_tide_tmp_dir/*/{completions,conf.d,functions} $__fish_config_dir fish_path=(status fish-path) exec $fish_path -C "emit _tide_init_install"
+>set -l _tide_tmp_dir (command mktemp -d) curl https://codeload.github.com/ilancosman/tide/tar.gz v6 | tar -xzC $_tide_tmp_dir command cp -R $_tide_tmp_dir/*/{completions,conf.d,functions} $__fish_config_dir fish_path=(status fish-path) exec $fish_path -C "emit _tide_init_install"
 
 ### Instalar Papirus Icon theme
 
