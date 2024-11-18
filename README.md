@@ -8,7 +8,7 @@ Olá! Este aqui é meu pequeno repositório com tutoriais criados por mim para m
 
 [![openSUSE](https://img.shields.io/badge/openSUSE%20Tumbleweed-%2364B345?style=flat-square&logo=openSUSE&logoColor=white&link=hhttps://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md)](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md)
 
-[![Fedora](https://img.shields.io/badge/Fedora%20KDE-294172?style=flat-square&logo=fedora&logoColor=white&link=https://fedoraproject.org/)](https://fedoraproject.org/)
+[![Fedora](https://img.shields.io/badge/Fedora%20KDE-294172?style=flat-square&logo=fedora&logoColor=white&link=https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md)
 [![Fedora](https://img.shields.io/badge/Fedora%20GNOME-294172?style=flat-square&logo=fedora&logoColor=white&link=https://fedoraproject.org/)](https://fedoraproject.org/)
 
 [![Arch](https://img.shields.io/badge/Arch%20Linux%20KDE-1793D1?logo=arch-linux&logoColor=fff&style=flat-square&link=https://archlinux.org)](https://archlinux.org/)
