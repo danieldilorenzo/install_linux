@@ -144,9 +144,9 @@ Descomentar a linha abaixo
 >sudo systemctl enable bluetooth.service
 
 ### Reniniciar
->exit
->umount -R /mnt
->reboot
+>exit<br>
+>umount -R /mnt<br>
+>reboot<br>
 
 <br>
 
