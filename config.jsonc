@@ -11,6 +11,19 @@
 //
 // https://github.com/fastfetch-cli/fastfetch
 //
+// Início com o logo openSUSE
+//
+//
+//
+// {
+//    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+//    "logo": "opensuse",
+//    "display": {
+//        "separator": ">  ",
+//        "color": {
+//            "separator": "red"
+//        },
+//
 
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
