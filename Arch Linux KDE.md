@@ -70,10 +70,10 @@
 
 Descomentar
 
->- en_US.UTF-8 UTF-8
->- en_US ISO-8859-1
->- pt_BR.UTF-8 UTF-8
->- pt_BR ISO-8859-1
+>- en_US.UTF-8 UTF-8<br>
+>- en_US ISO-8859-1<br>
+>- pt_BR.UTF-8 UTF-8<br>
+>- pt_BR ISO-8859-1<br>
 
 >locale-gen
 
@@ -92,9 +92,9 @@ Descomentar
 
 Colar
 
->127.0.0.1      	localhost
->::1          		localhost
->127.0.1.1      	arch
+>127.0.0.1      	localhost<br>
+>::1          		localhost<br>
+>127.0.1.1      	arch<br>
 
 ### Configurar senha
 
