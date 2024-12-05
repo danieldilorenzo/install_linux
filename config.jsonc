@@ -7,6 +7,10 @@
 //
 // fastfetch --list-logos
 //
+// Edit config
+//
+// sudo nano .config/fastfetch/config.jsonc
+//
 // Documentação: 
 //
 // https://github.com/fastfetch-cli/fastfetch
