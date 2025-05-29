@@ -48,6 +48,15 @@
 
 >sudo dnf install python3-idle -y
 
+### Instalar e rodar Cypress
+
+>sudo dnf install npm nodejs git curl
+
+##### Rodando
+
+>npm install cypress --save-dev <br>
+>npx cypress open
+
 ### Instalar Flatpack
 
 >flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -100,3 +109,9 @@
 sudo dnf remove akregator.x86_64 akregator-libs.x86_64 kf5-akonadi-calendar.x86_64 kf5-akonadi-contacts.x86_64 kf5-akonadi-mime.x86_64 kf5-akonadi-notes.x86_64 kf5-akonadi-search.x86_64 kf5-akonadi-server.x86_64 kf5-akonadi-server-mysql.x86_64  kamera.x86_64 kamoso.x86_64 kdepim-addons.x86_64 krdc krfb kdepim-runtime.x86_64 kdepim-runtime-libs.x86_64 kmag.x86_64 kmahjongg.x86_64 kmail.x86_64 kmail-account-wizard.x86_64 kmail-libs.x86_64 kmines.x86_64 kmouth.x86_64 kolourpaint.x86_64 kolourpaint-libs.x86_64 kontact.x86_64 kontact-libs.x86_64 konversation.x86_64 korganizer.x86_64 korganizer-libs.x86_64 kwrite.x86_64 libreoffice-calc.x86_64 libreoffice-core.x86_64 libreoffice-data.x86_64 libreoffice-draw.x86_64 libreoffice-emailmerge.x86_64 libreoffice-graphicfilter.x86_64 libreoffice-gtk3.x86_64 libreoffice-gtk4.x86_64 libreoffice-help-en.x86_64 libreoffice-impress.x86_64 libreoffice-kf5.x86_64 libreoffice-langpack-en.x86_64 libreoffice-math.x86_64 libreoffice-ogltrans.x86_64 libreoffice-opensymbol-fonts.noarch libreoffice-pdfimport.x86_64 libreoffice-pyuno.x86_64 libreoffice-ure.x86_64 libreoffice-ure-common.x86_64 libreoffice-writer.x86_64 libreoffice-x11.x86_64 pim-data-exporter.x86_64 pim-data-exporter-libs.x86_64 pim-sieve-editor.x86_64
 
 
+//
+// Fonte Cypress
+//
+// https://docs.cypress.io/app/get-started/install-cypress
+// https://docs.cypress.io/app/get-started/open-the-app
+// 
