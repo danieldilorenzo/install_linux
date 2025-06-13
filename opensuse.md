@@ -4,6 +4,10 @@
 
 > sudo zypper in systemd-zram-service && sudo zramswapon
 
+### Ver se zram está ativa
+
+> sudo systemctl status zramswap
+
 ### Instalar Google Chrome
 
 > sudo zypper ar http://dl.google.com/linux/chrome/rpm/stable/x86_64 Google-Chrome && wget https://dl.google.com/linux/linux_signing_key.pub && sudo rpm --import linux_signing_key.pub && sudo zypper ref -f && sudo zypper in google-chrome-stable
