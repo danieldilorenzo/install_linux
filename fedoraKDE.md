@@ -87,7 +87,16 @@
 
 >cd .oh-my-zsh/plugins
 
->git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git  && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+>sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+
+<!-- 
+
+Se o comando acima quebrar, olhar a documentação aqui
+
+https://ohmyz.sh/#install
+
+-->
 
 >cd ~ && sudo nano .zshrc
 
