@@ -87,8 +87,7 @@
 
 >cd .oh-my-zsh/plugins
 
->sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
+>git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 <!-- 
 
