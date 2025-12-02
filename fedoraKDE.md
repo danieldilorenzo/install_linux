@@ -4,6 +4,20 @@
 
 >sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
+### Arrumar drivers de rede
+
+_Serve para quando o wifi demora alguns minutos para conectar_
+
+>sudo dnf install kernel-devel akmod-wl kmod-wl broadcom-wl
+
+<!--
+
+Fonte
+
+https://www.reddit.com/r/linux4noobs/comments/1k7mn28/installing_broadcom_drivers_in_fedora_workstation/?tl=pt-br
+
+-->
+
 ### Instalando plugins de áudio e vídeo
 
 >sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel && sudo dnf install lame\* --exclude=lame-devel
