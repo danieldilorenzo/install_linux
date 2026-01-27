@@ -68,7 +68,7 @@ O que isso vai fazer no sistema?
 
     Network Buffers: Melhora a latência e a velocidade de download ao aumentar o tamanho das janelas de recebimento de dados.
 
-**Nível de Risco:** Médio
+- **Nível de Risco:** Médio
 
 <br>
 <br>
