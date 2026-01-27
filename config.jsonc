@@ -21,7 +21,8 @@
 //
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo":"fedora_small",
+    "logo":"opensuse-tumbleweed_old",     // logo openSUSE
+    //"logo":"fedora_small",                // logo Fedora
     "logo": {
         "type": "small",
         "padding": {
