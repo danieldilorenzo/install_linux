@@ -10,6 +10,9 @@
     * [Otimização do Kernel (sysctl)](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#otimiza%C3%A7%C3%A3o-do-kernel-sysctl)
     * [Instalar Thermald](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-thermald)
 
+* 🔄 **Backup e rollback**
+    * [Instalar OPI](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-opi)
+
 * 📦 **Gerenciamento de Pacotes & Drivers**
     * [Instalar OPI](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-opi)
     * [Instalar drivers ADB](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-drivers-adb)
@@ -205,8 +208,87 @@ sudo zypper remove thermald
 ```
 
 <br>
-<br>
 
+
+## Gerenciando Snapper e Rollback
+
+## 1. O que é?
+O **Snapper** é uma ferramenta de gerenciamento de snapshots (instantâneos) para sistemas de arquivos Linux. No openSUSE, ele vem integrado nativamente ao sistema de arquivos **Btrfs**, permitindo criar pontos de restauração do sistema de forma eficiente e automática.
+
+## 2. O que faz no sistema?
+Ele funciona como um seguro para o seu sistema operacional:
+* **Snapshots Automáticos (Timeline):** Registra o estado do sistema periodicamente (de hora em hora).
+* **Snapshots de Transação (Zypper):** Cria um ponto de restauração antes e depois de qualquer instalação ou atualização de pacotes.
+* **Rollback Nativo:** Permite reverter o sistema inteiro para um estado anterior diretamente pelo menu de boot (GRUB).
+* **Diferenciação de Arquivos:** Permite comparar o que mudou em arquivos de configuração entre dois momentos específicos.
+
+## 3. Riscos
+* **Consumo de Espaço:** Sem limites configurados, os snapshots podem ocupar todo o espaço do disco, causando falha no boot ou lentidão.
+* **Não é Backup:** O Snapper protege contra erros de software ou do usuário, mas não contra falhas físicas do disco. Se o hardware falhar, os snapshots serão perdidos.
+* **Fragmentação:** Em discos mecânicos (HDDs), o excesso de snapshots pode causar fragmentação; em SSDs, o impacto é desprezível.
+
+## 4. Guia de Configuração (Otimização)
+
+Para evitar o consumo excessivo de disco, edite o arquivo de configuração da partição raiz:
+`sudo nano /etc/snapper/configs/root`
+
+### Configurações Recomendadas para SSDs
+
+| Parâmetro | Valor Sugerido | Descrição |
+| :--- | :--- | :--- |
+| **TIMELINE_LIMIT_HOURLY** | `3` | Mantém as últimas 3 horas de uso. |
+| **TIMELINE_LIMIT_DAILY** | `5` | Mantém um snapshot por dia dos últimos 5 dias. |
+| **TIMELINE_LIMIT_WEEKLY** | `1` | Mantém apenas um registro da semana anterior. |
+| **TIMELINE_LIMIT_MONTHLY** | `0` | Desativa retenção mensal (recomendado para Rolling Release). |
+| **NUMBER_LIMIT** | `4-10` | Mantém entre 4 e 10 pares de snapshots do Zypper. |
+| **NUMBER_LIMIT_IMPORTANT**| `4` | Retém snapshots de atualizações grandes/críticas. |
+| **FREE_LIMIT** | `0.2` | Inicia limpeza forçada se o espaço livre for menor que 20%. |
+
+**Para aplicar e limpar o excesso imediatamente:**
+
+```bash
+sudo snapper cleanup timeline
+sudo snapper cleanup number
+```
+
+## 5. Procedimento de Emergência: O Rollback
+
+Se o sistema quebrar ou não iniciar corretamente após uma atualização ou modificação:
+
+### Parte A: O Boot em modo Snapshot
+1. Reinicie o computador.
+2. No menu do GRUB (tela de boot), selecione a opção **"Start bootloader from a read-only snapshot"**.
+3. Escolha um snapshot da lista (geralmente o último antes do problema aparecer).
+4. O sistema iniciará em modo de **apenas leitura**. Verifique se o erro desapareceu.
+
+### Parte B: Tornar a Reversão Permanente
+Uma vez dentro do sistema (ainda no modo leitura):
+1. Abra o terminal (Konsole ou terminal de sua escolha).
+2. Execute o comando principal de restauração:
+3.    ```bash sudo snapper rollback```
+
+4. O Snapper definirá este snapshot como o novo estado padrão ("root") do sistema.
+5. Reinicie o computador para sair do modo de leitura e voltar ao sistema normal:
+```bash
+sudo reboot
+```
+
+### Passo 6: Comandos de Diagnóstico
+
+## 6. Comandos Úteis de Diagnóstico e Manutenção
+
+Use estes comandos para monitorar a saúde do seu sistema de snapshots:
+
+| Comando | O que faz? |
+| :--- | :--- |
+| `snapper list` | Exibe todos os snapshots, IDs, datas e descrições. |
+| `snapper diff ID1..ID2` | Mostra a diferença de conteúdo entre dois snapshots. |
+| `snapper status ID1..ID2` | Lista arquivos criados (+), deletados (-) ou modificados (c). |
+| `sudo btrfs filesystem du -s /` | Calcula o uso de disco real considerando os snapshots (Btrfs). |
+| `sudo snapper delete [ID]` | Remove um snapshot manualmente para liberar espaço. |
+| `sudo snapper cleanup number` | Força a limpeza baseada nos limites numéricos definidos. |
+
+<br>
 
 ## Instalar OPI
 
