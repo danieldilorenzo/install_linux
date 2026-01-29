@@ -11,7 +11,7 @@
     * [Instalar Thermald](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-thermald)
 
 * 🔄 **Backup e rollback**
-    * [Instalar OPI](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-opi)
+    * [Gerenciando Snapper e Rollback](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#gerenciando-snapper-e-rollback)
 
 * 📦 **Gerenciamento de Pacotes & Drivers**
     * [Instalar OPI](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-opi)
