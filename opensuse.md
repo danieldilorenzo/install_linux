@@ -245,7 +245,7 @@ Para evitar o consumo excessivo de disco, edite o arquivo de configuração da p
 | **TIMELINE_LIMIT_WEEKLY** | `1` | Mantém apenas um registro da semana anterior. |
 | **TIMELINE_LIMIT_MONTHLY** | `0` | Desativa retenção mensal (recomendado para Rolling Release). |
 | **NUMBER_LIMIT** | `4-10` | Mantém entre 4 e 10 pares de snapshots do Zypper. |
-| **NUMBER_LIMIT_IMPORTANT**| `4` | Retém snapshots de atualizações grandes/críticas. |
+| **NUMBER_LIMIT_IMPORTANT** | `4` | Retém snapshots de atualizações grandes/críticas. |
 | **FREE_LIMIT** | `0.2` | Inicia limpeza forçada se o espaço livre for menor que 20%. |
 
 > [!TIP]
@@ -267,12 +267,15 @@ Se o sistema quebrar ou não iniciar corretamente após uma atualização ou mod
 Uma vez dentro do sistema (ainda no modo leitura):
 1. Abra o terminal.
 2. Execute o comando principal de restauração:
+ 
    ```bash
    sudo snapper rollback
    ```
+   
 3. O Snapper definirá este snapshot como o novo estado padrão ("root") do sistema.
 4. Reinicie o computador para sair do modo de leitura e voltar ao sistema normal:
-   ```bash
+
+    ```bash
    sudo reboot
    ```
 
