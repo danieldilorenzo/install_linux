@@ -3,8 +3,51 @@
 
 <br>
 
-## 📌 Índice
-  1. [Instalar Zram Generator](instalar-zram-generator)
+## 📑 Índice de Instalação e Configuração
+
+* 🚀 **Performance & Kernel**
+    * [Instalar Zram Generator](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-zram-generator)
+    * [Otimização do Kernel (sysctl)](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#otimiza%C3%A7%C3%A3o-do-kernel-sysctl)
+    * [Instalar Thermald](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-thermald)
+
+* 📦 **Gerenciamento de Pacotes & Drivers**
+    * [Instalar OPI](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-opi)
+    * [Instalar drivers ADB](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-drivers-adb)
+    * [Instalar Wget & Curl](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#wget--curl)
+    * [Instalar NPM](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-npm)
+    * [Instalar Git](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-git)
+
+* 💻 **Terminal & Shell**
+    * [Instalar ZSH](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-zsh)
+        * └─ [Configurar ZSH](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-zsh)
+    * [Instalar Fastfetch](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-fastfetch)
+
+* 🌐 **Navegação & Web**
+    * [Ajuste de Cores Estouradas no Chrome](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#ajuste-de-cores-estouradas-no-chrome)
+        * └─ [No KDE Plasma](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#no-kde-plasma)
+        * └─ [No Gnome](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#no-gnome)
+
+* 🎨 **Interface & Customização**
+    * [Instalar Wallpapers](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-wallpapers)
+    * [Instalar Fontes](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-fontes)
+    * [Instalar Papirus Icons & Folders](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-papirus-icons--folders)
+
+* 🛠️ **Ferramentas & Utilidades**
+    * [Instalar Idle](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-idle)
+    * [Instalar Gnome Boxes](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-gnome-boxes)
+    * [Instalar Gerenciador de Partiçōes](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-gerenciador-de-parti%C3%A7%C3%B5es)
+    * [Instalar KDE Imagewriter](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-imagewriter)
+    * [Instalar KDE Connect](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-connect)
+
+* 🎵 **Multimídia & Apps KDE**
+    * [Instalar Elisa](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-elisa)
+    * [Instalar Ktorrent](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-ktorrent)
+    * [Instalar KDE Weather](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-weather)
+
+* ⚡ **Instalação Expressa**
+    * [Instalar tudo junto](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-tudo-junto)
+
+
 
 ## Instalar Zram Generator
 
