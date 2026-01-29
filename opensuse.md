@@ -47,8 +47,8 @@
 * ⚡ **Instalação Expressa**
     * [Instalar tudo junto](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-tudo-junto)
 
-* 🧹 **Atualização e limpeza do sistema **
-    * [Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)]
+* 🧹 **Atualização e limpeza do sistema**
+    * [Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#script-para-atualiza%C3%A7%C3%A3o-e-limpeza-do-sistema-sistema-flatpak-e-firmware)
 
 ## Instalar Zram Generator
 
@@ -582,6 +582,7 @@ sudo zypper in kweather
 sudo zypper in android-tools zsh breeze6-wallpapers plasma6-workspace-wallpapers python3-idle npm git wget curl kdeconnect-kde papirus-icon-theme papirus-folders partitionmanager imagewriter elisa ktorrent kweather jetbrains-mono-fonts google-droid-fonts libertinus-fonts texlive-tex-gyre ubuntu-fonts bitstream-vera-fonts fira-code-fonts google-nobile-fonts inter-fonts ibm-plex-fonts ibm-plex-mono-fonts ibm-plex-sans-arabic-fonts ibm-plex-sans-condensed-fonts ibm-plex-sans-devanagari-fonts ibm-plex-sans-fonts
 
 ```
+<br>
 
 ## Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)
 
