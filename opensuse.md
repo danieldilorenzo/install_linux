@@ -291,7 +291,7 @@ source $ZSH/oh-my-zsh.sh
 <br>
 
 
-## Ajuste de Cores Estouradas no Chrome (Linux)
+## Ajuste de Cores Estouradas no Chrome 
 
 Caso o navegador apresente cores "estouradas", superexposição ou brilho inconsistente em relação ao sistema, a solução é forçar o backend gráfico estável.
 
@@ -320,6 +320,7 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 6.  Clique em **OK**.
 
 <br>
+
 #### No GNOME
 
 **Edição manual do arquivo .desktop via terminal.**
