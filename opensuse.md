@@ -47,7 +47,8 @@
 * ⚡ **Instalação Expressa**
     * [Instalar tudo junto](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-tudo-junto)
 
-
+* 🧹 **Atualização e limpeza do sistema **
+    * [Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)]
 
 ## Instalar Zram Generator
 
@@ -581,3 +582,69 @@ sudo zypper in kweather
 sudo zypper in android-tools zsh breeze6-wallpapers plasma6-workspace-wallpapers python3-idle npm git wget curl kdeconnect-kde papirus-icon-theme papirus-folders partitionmanager imagewriter elisa ktorrent kweather jetbrains-mono-fonts google-droid-fonts libertinus-fonts texlive-tex-gyre ubuntu-fonts bitstream-vera-fonts fira-code-fonts google-nobile-fonts inter-fonts ibm-plex-fonts ibm-plex-mono-fonts ibm-plex-sans-arabic-fonts ibm-plex-sans-condensed-fonts ibm-plex-sans-devanagari-fonts ibm-plex-sans-fonts
 
 ```
+
+## Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)
+
+
+```bash
+
+#!/bin/bash
+
+# Cores para facilitar a leitura
+VERDE='\033[0;32m'
+AZUL='\033[0;34m'
+RESET='\033[0m'
+
+echo -e "${AZUL}--- Iniciando Atualização Completa ---${RESET}"
+
+# 1. Detectar o Gerenciador de Pacotes
+if [ -f /etc/fedora-release ]; then
+    echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (DNF)...${RESET}"
+    # No Fedora, mantemos o -y se você preferir, ou removemos para ver o que será feito
+    sudo dnf upgrade --refresh
+elif [ -f /etc/os-release ] && grep -q "opensuse" /etc/os-release; then
+    echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (Zypper)...${RESET}"
+    sudo zypper ref
+    # REMOVIDO o -y para que ele pare nos conflitos e peça sua escolha (1, 2, 3...)
+    sudo zypper dup
+else
+    echo "Sistema não identificado."
+fi
+
+# 2. Atualizar Flatpaks
+if command -v flatpak &> /dev/null; then
+    echo -e "${VERDE}[2/3] Atualizando Flatpaks...${RESET}"
+    flatpak update -y
+    flatpak uninstall --unused -y
+fi
+
+# 3. Atualizar Firmware
+if command -v fwupdmgr &> /dev/null; then
+    echo -e "${VERDE}[3/3] Verificando atualizações de Firmware...${RESET}"
+    fwupdmgr get-updates
+    fwupdmgr update
+fi
+
+
+# 4. Limpeza de Cache e Logs
+echo -e "${VERDE}[4/4] Iniciando limpeza de primavera...${RESET}"
+
+# Limpa cache do gerenciador de pacotes
+if [ -f /etc/fedora-release ]; then
+    sudo dnf clean all
+elif [ -f /etc/os-release ] && grep -q "opensuse" /etc/os-release; then
+    sudo zypper clean -a
+fi
+
+# Limpa logs antigos (mantém apenas os últimos 2 dias)
+sudo journalctl --vacuum-time=2d
+
+# Limpa cache de miniaturas do usuário
+rm -rf ~/.cache/thumbnails/*
+
+echo -e "${AZUL}--- Sistema Atualizado e Limpo! ---${RESET}"
+
+
+
+```
+
