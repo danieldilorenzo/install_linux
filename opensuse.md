@@ -432,7 +432,7 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 <br>
 
 
-## Instalar Instalar KDE Imagewriter
+## Instalar KDE Imagewriter
 
 - **O que é:** Grava imagens ISO em pendrives.
 
@@ -441,7 +441,7 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 <br>
 
 
-## Instalar Instalar Elisa
+## Instalar Elisa
 
 - **O que é:** Reprodutor de músicas nativo do ambiente KDE..
   
