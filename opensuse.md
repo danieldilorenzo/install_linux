@@ -62,11 +62,15 @@
 
 Instalação:
 
-```sudo zypper in zram-generator```
+```bash
+sudo zypper in zram-generator
+```
 
 Após isso, editar o arquivo:
 
-```sudo nano /etc/systemd/zram-generator.conf```
+```bash
+sudo nano /etc/systemd/zram-generator.conf
+```
 
 <br>
 
@@ -82,15 +86,21 @@ fs-type = swap
 
 Reiniciar os serviços para iniciar a zram
 
-```sudo systemctl daemon-reload ```
+```bash
+sudo systemctl daemon-reload
+```
 
 Iniciando a zram
 
-```sudo systemctl start /dev/zram0```
+```bash
+sudo systemctl start /dev/zram0
+```
 
 Verificando se está iniciado
 
-```sudo zramctl```
+```bash
+sudo zramctl
+```
 
 - **Revertendo:**
 
@@ -126,7 +136,9 @@ O que isso vai fazer no sistema?
 
 Editando o perfi
 
-```sudo nano /etc/sysctl.d/99-performance.conf```
+```bash
+sudo nano /etc/sysctl.d/99-performance.conf
+```
 
 
 Cole o conteúdo
@@ -144,7 +156,9 @@ vm.dirty_background_ratio=5
 
 - **Como reverter:** edite novamente o perfil com
 
-```sudo nano /etc/sysctl.d/99-performance.conf```
+```bash
+sudo nano /etc/sysctl.d/99-performance.conf
+```
 
 Em seguida, reinicie o sistema.
 
@@ -185,7 +199,9 @@ sudo systemctl enable --now thermald
 
 - **Revertendo:** Rode o comando abaixo, e após isso, reinicie o notebook
 
-```sudo zypper remove thermald```
+```bash
+sudo zypper remove thermald
+```
 
 <br>
 <br>
@@ -213,7 +229,9 @@ Ele simplifica a gestão de repositórios externos. Em vez de você ter que entr
 
 Instalando:
 
-```sudo zypper in opi```
+```bash
+sudo zypper in opi
+```
 
 Instalando codecs, Chrome, VSCode e Steam e fontes da Microsoft:
 
@@ -269,15 +287,22 @@ O openSUSE facilita muito isso, pois os pacotes estão nos repositórios oficiai
 
 Podemos rodar no terminal
 
-```sudo zypper in android tools```
+```bash
+sudo zypper in android tools
+```
 
 Ou
 
-```opi android-tools```
+```bash
+opi android-tools
+```
 
 <br>
 
-- **Como reverter:** Executando no terminal ```sudo zypper rm android-tools```
+- **Como reverter:** Executando no terminal
+```bash
+sudo zypper rm android-tools
+```
 
 <br>
 
@@ -288,11 +313,15 @@ Ou
 
 Para isso, executamos no terminal
 
-```sudo zypper in android-udev-rules```
+```bash
+sudo zypper in android-udev-rules
+```
 
 Ou
 
-```opi android-udev-rules```
+```bash
+opi android-udev-rules
+```
 
 <br>
 
@@ -300,7 +329,9 @@ Ou
 
 - **O que é:** Ferramentas de linha de comando para transferência de dados. Permitem baixar arquivos e interagir com servidores via terminal. O curl é muito usado para instalar scripts (como o do NVM ou Docker), e o wget é o clássico para downloads diretos.
 
-```sudo zypper in wget curl```
+```bash
+sudo zypper in wget curl
+```
 
 
 <br>
@@ -310,7 +341,9 @@ Ou
 
 - **O que é:** Gerenciador de pacotes Node.js.
 
-```sudo zypper in npm```
+```bash
+sudo zypper in npm
+```
 
 <br>
 
@@ -319,7 +352,9 @@ Ou
 
 - **O que é:** O sistema de controle de versão mais usado no mundo. Gerencia o histórico de alterações em códigos e arquivos. No Linux, é essencial para baixar (clonar) projetos diretamente do GitHub ou GitLab.
   
-```sudo zypper in git```
+```bash
+sudo zypper in git
+```
 
 <br>
 
@@ -362,7 +397,9 @@ source $ZSH/oh-my-zsh.sh
 
 - **O que é:** Scripts de informação do sistema. Exibe o logo da sua distro  em ASCII junto com informações de hardware (CPU, GPU, RAM) e software (Kernel, Desktop Environment) de forma visual no terminal.
   
-```sudo zypper in fastfetch```
+```bash
+sudo zypper in fastfetch
+```
 
 <br>
 
@@ -424,14 +461,18 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 ## Instalar wallpapers
 
-```sudo zypper in breeze6-wallpapers plasma6-workspace-wallpapers```
+```bash
+sudo zypper in breeze6-wallpapers plasma6-workspace-wallpapers
+```
 
 <br>
 
 
 ## Instalar Fontes
 
-```sudo zypper in jetbrains-mono-fonts google-droid-fonts libertinus-fonts texlive-tex-gyre ubuntu-fonts bitstream-vera-fonts fira-code-fonts google-nobile-fonts inter-fonts ibm-plex-fonts ibm-plex-mono-fonts ibm-plex-sans-arabic-fonts ibm-plex-sans-condensed-fonts ibm-plex-sans-devanagari-fonts ibm-plex-sans-fonts```
+```bash
+sudo zypper in jetbrains-mono-fonts google-droid-fonts libertinus-fonts texlive-tex-gyre ubuntu-fonts bitstream-vera-fonts fira-code-fonts google-nobile-fonts inter-fonts ibm-plex-fonts ibm-plex-mono-fonts ibm-plex-sans-arabic-fonts ibm-plex-sans-condensed-fonts ibm-plex-sans-devanagari-fonts ibm-plex-sans-fonts
+```
 
 <br>
 
@@ -440,7 +481,9 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 - **O que é:** Pacote de ícone e pastas.
   
-```sudo zypper in papirus-icon-theme papirus-folders```
+```bash
+sudo zypper in papirus-icon-theme papirus-folders
+```
 
 <br>
 
@@ -448,7 +491,9 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 - **O que é:** Editor simples para códigos de Python.
 
-```sudo zypper in python3-idle```
+```bash
+sudo zypper in python3-idle
+```
 
 <br>
 
@@ -457,7 +502,9 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 .
 - **O que é:** Programa de máquina virtual
   
-```sudo flatpak install flathub org.gnome.Boxes```
+```bash
+sudo flatpak install flathub org.gnome.Boxes
+```
 
 <br>
 
@@ -466,7 +513,9 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 - **O que é:** Programa nativo do ambiente KDE que permite gerenciar, editando ou excluindo partições.
 
-```sudo zypper in partitionmanager```
+```bash
+sudo zypper in partitionmanager
+```
 
 <br>
 
@@ -474,7 +523,9 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 - **O que é:** Grava imagens ISO em pendrives.
 
-```sudo zypper in imagewriter```
+```bash
+sudo zypper in imagewriter
+```
 
 <br>
 
@@ -482,7 +533,9 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 - **O que é:** Ferramenta de integração total que permite a comunicação sem fio entre o seu computador (Linux) e o seu dispositivo móvel (Android ou iOS). Ele utiliza protocolos de rede local para criar uma ponte segura entre os aparelhos.
   
-```sudo zypper in kdeconnect-kde```
+```bash
+sudo zypper in kdeconnect-kde
+```
 
 <br>
 
@@ -490,7 +543,9 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 - **O que é:** Reprodutor de músicas nativo do ambiente KDE..
   
-```sudo zypper in elisa```
+```bash
+sudo zypper in elisa
+```
 
 <br>
 
@@ -499,7 +554,9 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 - **O que é:** Cliente de BitTorrent e nativo do ambiente KDE.
   
-```sudo zypper in ktorrent```
+```bash
+sudo zypper in ktorrent
+```
 
 <br>
 
@@ -508,7 +565,9 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 - **O que é:** Aplicativo de clima nativo do ambiente KDE..
   
-```sudo zypper in kweather```
+```bash
+sudo zypper in kweather
+```
 
 
 <br>
@@ -518,5 +577,7 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 ## Instalar tudo junto
 
 ```bash
-sudo zypper install android-tools zsh breeze6-wallpapers plasma6-workspace-wallpapers python3-idle npm git wget curl kdeconnect-kde papirus-icon-theme papirus-folders partitionmanager imagewriter elisa ktorrent kweather jetbrains-mono-fonts google-droid-fonts libertinus-fonts texlive-tex-gyre ubuntu-fonts bitstream-vera-fonts fira-code-fonts google-nobile-fonts inter-fonts ibm-plex-fonts ibm-plex-mono-fonts ibm-plex-sans-arabic-fonts ibm-plex-sans-condensed-fonts ibm-plex-sans-devanagari-fonts ibm-plex-sans-fonts
+
+sudo zypper in android-tools zsh breeze6-wallpapers plasma6-workspace-wallpapers python3-idle npm git wget curl kdeconnect-kde papirus-icon-theme papirus-folders partitionmanager imagewriter elisa ktorrent kweather jetbrains-mono-fonts google-droid-fonts libertinus-fonts texlive-tex-gyre ubuntu-fonts bitstream-vera-fonts fira-code-fonts google-nobile-fonts inter-fonts ibm-plex-fonts ibm-plex-mono-fonts ibm-plex-sans-arabic-fonts ibm-plex-sans-condensed-fonts ibm-plex-sans-devanagari-fonts ibm-plex-sans-fonts
+
 ```
