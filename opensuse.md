@@ -238,7 +238,7 @@ opi ms-fonts         # Fontes da Microsoft
 <br>
 <br>
 
-## Instalar drivers adb
+## Instalar drivers ADB
 
 
 - **O que é:** O ADB é uma ferramenta de linha de comando que permite a comunicação entre o seu computador e um dispositivo Android. Ele faz parte do SDK Platform-Tools do Android e funciona como uma ponte para enviar comandos, transferir arquivos e acessar o shell do sistema do celular.
@@ -295,8 +295,33 @@ Ou
 ```opi android-udev-rules```
 
 <br>
+
+## Wget & Curl
+
+- **O que é:** Ferramentas de linha de comando para transferência de dados. Permitem baixar arquivos e interagir com servidores via terminal. O curl é muito usado para instalar scripts (como o do NVM ou Docker), e o wget é o clássico para downloads diretos.
+
+```sudo zypper in wget curl```
+
+
 <br>
 
+
+## Instalar NPM
+
+- **O que é:** Gerenciador de pacotes Node.js.
+
+```sudo zypper in npm```
+
+<br>
+
+
+## Instalar Git
+
+- **O que é:** O sistema de controle de versão mais usado no mundo. Gerencia o histórico de alterações em códigos e arquivos. No Linux, é essencial para baixar (clonar) projetos diretamente do GitHub ou GitLab.
+  
+```sudo zypper in git```
+
+<br>
 
 ## Instalar ZSH
 
@@ -333,6 +358,13 @@ source $ZSH/oh-my-zsh.sh
 
 <br>
 
+## Instalar FastFetch
+
+- **O que é:** Scripts de informação do sistema. Exibe o logo da sua distro  em ASCII junto com informações de hardware (CPU, GPU, RAM) e software (Kernel, Desktop Environment) de forma visual no terminal.
+  
+```sudo zypper in fastfetch```
+
+<br>
 
 ## Ajuste de Cores Estouradas no Chrome 
 
@@ -397,14 +429,20 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 <br>
 
 
-## Instalar FastFetch
+## Instalar Fontes
 
-- **O que é:** Scripts de informação do sistema. Exibe o logo da sua distro  em ASCII junto com informações de hardware (CPU, GPU, RAM) e software (Kernel, Desktop Environment) de forma visual no terminal.
-  
-```sudo zypper in fastfetch```
+```sudo zypper in jetbrains-mono-fonts google-droid-fonts libertinus-fonts texlive-tex-gyre ubuntu-fonts bitstream-vera-fonts fira-code-fonts google-nobile-fonts inter-fonts ibm-plex-fonts ibm-plex-mono-fonts ibm-plex-sans-arabic-fonts ibm-plex-sans-condensed-fonts ibm-plex-sans-devanagari-fonts ibm-plex-sans-fonts```
 
 <br>
 
+
+## Instalar Papirus Icons & Folders
+
+- **O que é:** Pacote de ícone e pastas.
+  
+```sudo zypper in papirus-icon-theme papirus-folders```
+
+<br>
 
 ## Instalar Idle 
 
@@ -424,48 +462,6 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 <br>
 
 
-## Instalar NPM
-
-- **O que é:** Gerenciador de pacotes Node.js.
-
-```sudo zypper in npm```
-
-<br>
-
-
-## Instalar Git
-
-- **O que é:** O sistema de controle de versão mais usado no mundo. Gerencia o histórico de alterações em códigos e arquivos. No Linux, é essencial para baixar (clonar) projetos diretamente do GitHub ou GitLab.
-  
-```sudo zypper in git```
-
-<br>
-
-## Wget & Curl
-
-- **O que é:** Ferramentas de linha de comando para transferência de dados. Permitem baixar arquivos e interagir com servidores via terminal. O curl é muito usado para instalar scripts (como o do NVM ou Docker), e o wget é o clássico para downloads diretos.
-
-```sudo zypper in wget curl```
-
-
-## Instalar KDE Connect
-
-- **O que é:** Ferramenta de integração total que permite a comunicação sem fio entre o seu computador (Linux) e o seu dispositivo móvel (Android ou iOS). Ele utiliza protocolos de rede local para criar uma ponte segura entre os aparelhos.
-  
-```sudo zypper in kdeconnect-kde```
-
-<br>
-
-
-## Instalar Papirus Icons & Folders
-
-- **O que é:** Pacote de ícone e pastas.
-  
-```sudo zypper in papirus-icon-theme papirus-folders```
-
-<br>
-
-
 ## Instalar Gerenciador de partições
 
 - **O que é:** Programa nativo do ambiente KDE que permite gerenciar, editando ou excluindo partições.
@@ -473,7 +469,6 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 ```sudo zypper in partitionmanager```
 
 <br>
-
 
 ## Instalar KDE Imagewriter
 
@@ -483,6 +478,13 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 
 <br>
 
+## Instalar KDE Connect
+
+- **O que é:** Ferramenta de integração total que permite a comunicação sem fio entre o seu computador (Linux) e o seu dispositivo móvel (Android ou iOS). Ele utiliza protocolos de rede local para criar uma ponte segura entre os aparelhos.
+  
+```sudo zypper in kdeconnect-kde```
+
+<br>
 
 ## Instalar Elisa
 
@@ -512,11 +514,6 @@ Caso o navegador apresente cores "estouradas", superexposição ou brilho incons
 <br>
 
 
-## Instalar Fontes
-
-```sudo zypper in jetbrains-mono-fonts google-droid-fonts libertinus-fonts texlive-tex-gyre ubuntu-fonts bitstream-vera-fonts fira-code-fonts google-nobile-fonts inter-fonts ibm-plex-fonts ibm-plex-mono-fonts ibm-plex-sans-arabic-fonts ibm-plex-sans-condensed-fonts ibm-plex-sans-devanagari-fonts ibm-plex-sans-fonts```
-
-<br>
 
 ## Instalar tudo junto
 
