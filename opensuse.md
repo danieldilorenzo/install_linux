@@ -3,6 +3,8 @@
 
 <br>
 
+## 📌 Índice
+  1. [Instalar Zram Generator](instalar-zram-generator)
 
 ## Instalar Zram Generator
 
@@ -265,7 +267,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 <br>
 
 
-### Configurar ZSH
+## Configurar ZSH
 
 ```bash
 cd .oh-my-zsh/plugins
@@ -288,6 +290,61 @@ source $ZSH/oh-my-zsh.sh
 
 <br>
 
+
+## Ajuste de Cores Estouradas no Chrome (Linux)
+
+Caso o navegador apresente cores "estouradas", superexposição ou brilho inconsistente em relação ao sistema, a solução é forçar o backend gráfico estável.
+
+> [!IMPORTANT]
+> O parâmetro `--use-gl=desktop` força o Chrome a usar o driver OpenGL nativo do sistema, ignorando pós-processamentos problemáticos do motor Chromium.
+
+> [!WARNING]  
+> **Consumo de Bateria:** Em laptops, isso pode gerar um consumo levemente superior, pois desativa algumas otimizações de economia de energia do navegador.
+
+<br>
+
+
+#### No KDE Plasma
+
+**Método via interface gráfica (mais simples).**
+
+1.  Abra o **Menu de Aplicativos** (Menu K).
+2.  Localize o **Google Chrome** e clique com o **botão direito** > **Editar Aplicativo...**.
+3.  Vá na aba **Aplicativo**.
+4.  No campo **Comando**, localize a linha original:
+    `google-chrome-stable %U`
+5.  Altere para:
+    ```bash
+    google-chrome-stable --use-gl=desktop %U
+    ```
+6.  Clique em **OK**.
+
+<br>
+#### No GNOME
+
+**Edição manual do arquivo .desktop via terminal.**
+
+1.  **Copie o atalho para sua pasta local** (evita que atualizações do sistema resetem a configuração):
+    ```bash
+    cp /usr/share/applications/google-chrome.desktop ~/.local/share/applications/
+    ```
+2.  **Abra o arquivo para edição:**
+    ```bash
+    nano ~/.local/share/applications/google-chrome.desktop
+    ```
+3.  **Localize as linhas `Exec=`** (existem várias para modo anônimo, etc.).
+4.  **Adicione o parâmetro** em todas elas. Exemplo:
+    ```text
+    Exec=/usr/bin/google-chrome-stable --use-gl=desktop %U
+    ```
+5.  **Salve e saia:** Pressione `Ctrl + O`, `Enter` e depois `Ctrl + X`.
+
+> [!TIP]
+> **Dica:** Caso a mudança não apareça de imediato no menu, force a atualização dos ícones com:
+> `update-desktop-database ~/.local/share/applications/`
+
+
+<br>
 
 ## Instalar wallpapers
 
