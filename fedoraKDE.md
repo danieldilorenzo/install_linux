@@ -225,12 +225,10 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ### Plugins do ZSH
 
 ```bash
-cd .oh-my-zsh/plugins
-```
-<br>
-
-```bash
-git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+cd ~/.oh-my-zsh/custom/plugins
+git clone https://github.com/zsh-users/zsh-autosuggestions
+git clone https://github.com/marlonrichert/zsh-autocomplete
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
 ```
 <!-- 
 
@@ -244,18 +242,18 @@ https://ohmyz.sh/#install
 
 ```bash
 cd ~ && sudo nano .zshrc
+```
 
-source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 
-source ~/.oh-my-zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh 
-source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
- 
- 
- plugins=( 
-    zsh-autosuggestions 
-    zsh-autocomplete 
-    zsh-syntax-highlighting 
+Colar
+
+```bash
+source ~/.zshrc
+
+plugins=(
+    git
+    zsh-autosuggestions
+    zsh-autocomplete
+    zsh-syntax-highlighting
 )
 ```
 
