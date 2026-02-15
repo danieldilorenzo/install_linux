@@ -43,7 +43,6 @@ Guia de configuração otimizado para o hardware Xeon E5 2650 V4 e GPU RX 6600.
 
 **O que faz no sistema:** Ela prepara o "terreno" para que o sistema operacional consiga enxergar dispositivos com grandes quantidades de memória. No seu setup, ela é o pré-requisito obrigatório para o Resizable BAR. Sem ela ativada, o Xeon fica limitado a endereçar apenas uma fração minúscula da memória da sua RX 6600, criando um gargalo de comunicação.
 
-
 **Risco:** Baixo. Em casos raros, se o sistema operacional for muito antigo (32 bits), ele não dará boot. No seu Fedora 64 bits, é essencial.
 
 ```bash
@@ -107,12 +106,13 @@ sudo dnf install kernel-devel akmod-wl kmod-wl broadcom-wl
 
 ### Acelerar o Gerenciador de Pacotes (DNF)
 
+Editar o arquivo
+
 ```bash
     sudo nano /etc/dnf/dnf.conf
 
-
 ```
-Adicione ao final do arquivo:
+Colando o conteúdo abaixo
 
 ```bash
     max_parallel_downloads=10
@@ -168,7 +168,7 @@ vm.dirty_background_ratio=5
 ## 📦 3. Repositórios e Codecs
 
 ### Habilitar RPM Fusion
-    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 ### Plugins de Áudio e Vídeo
     sudo dnf install gstreamer1-plugins-{bad-*,good-*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel && sudo dnf install lame* --exclude=lame-devel
