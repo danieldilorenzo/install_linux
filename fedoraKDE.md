@@ -1,108 +1,222 @@
-## Pós instalação Fedora KDE
 
-### Instalar RPM Fusion
+# 🚀 Guia Pós-Instalação: Fedora KDE (Xeon & AMD Edition)
 
->sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+Guia de configuração otimizado para o hardware Xeon E5 2650 V4 e GPU RX 6600.
 
-### Arrumar drivers de rede
 
-_Serve para quando o wifi demora alguns minutos para conectar_
 
->sudo dnf install kernel-devel akmod-wl kmod-wl broadcom-wl
+<br>
 
-<!--
+## 📑 Índice de Instalação e Configuração
 
-Fonte
+* 🖥️ **1. Hardware e Boot**
+    * Above 4G Decoding
+    * Resizable BAR (Ajuste Visual do GRUB)
+* 🛠️ **2. Otimizações de Performance (DNF & Kernel)**
+    * Acelerar o Gerenciador de Pacotes (DNF)
+    * Otimização do Kernel (Sysctl)
+* 📦 **3. Repositórios e Codecs**
+    *  Habilitar RPM Fusion
+    * Plugins de Áudio e Vídeo
+* 💻 **4. Apps e Desenvolvimento**
+    * Visual Studio Code
+    * Node.js, Cypress e Python
+    * Instalação Cypress
+    * Rodar Cypress
+    * Fontes e Apps Essenciais
+* 🐚 **5. Customização do Terminal (ZSH)**
+    * Instalação e Oh My Zsh
+    * Plugins do ZSH
+* 🧹 **6. Limpeza de Bloatwares (KDE PIM / LibreOffice)**
 
-https://www.reddit.com/r/linux4noobs/comments/1k7mn28/installing_broadcom_drivers_in_fedora_workstation/?tl=pt-br
+## 🖥️ 1. Hardware e Boot
 
--->
 
-### Instalando plugins de áudio e vídeo
+### Above 4G Decoding
 
->sudo dnf install gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel && sudo dnf install lame\* --exclude=lame-devel
+**O que é:** Uma configuração de endereçamento de dispositivos PCIe de 64 bits.
 
-### Instalar drivers ADB
+**O que faz no sistema:** Ela prepara o "terreno" para que o sistema operacional consiga enxergar dispositivos com grandes quantidades de memória. No seu setup, ela é o pré-requisito obrigatório para o Resizable BAR. Sem ela ativada, o Xeon fica limitado a endereçar apenas uma fração minúscula da memória da sua RX 6600, criando um gargalo de comunicação.
 
->sudo dnf install android-tools fastboot -y
 
-### Instalar Steam
+**Risco:** Baixo. Em casos raros, se o sistema operacional for muito antigo (32 bits), ele não dará boot. No seu Fedora 64 bits, é essencial.
 
->sudo dnf install steam -y
+```bash
+Entrar na BIOS
 
-### Instalar VSCode
+Vá até a aba Advanced (usando as setas do teclado).
 
->sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo' && sudo dnf install code -y
+Procure por algo como PCI Devices Common Settings.
 
-### Instalar FiraCode
+Dentro desse menu, você deve encontrar as duas opções principais:
 
->sudo dnf install fira-code-fonts -y
+Above 4G Decoding: Mude para Enabled.
 
-### Instalar IBM Plex Mono
+Re-size BAR Support: Mude para Auto ou Enabled (essa opção só costuma aparecer depois que você ativa o Above 4G).
+```
 
->sudo dnf install ibm-plex-mono-fonts -y
+<br>
 
-### Instalar JetBrains
+### Resizable BAR (Ajuste Visual do GRUB)
 
->sudo dnf install jetbrains-mono-fonts-all -y
+****O que é:** Uma tecnologia do protocolo PCI Express que permite ao processador acessar toda a memória de vídeo (VRAM) de uma vez.
 
-### Instalar KTorrent
+**O que faz no sistema:** No seu caso, remove o limite de 256MB e entrega os 8GB da RX 6600 diretamente para o Xeon E5 2650 V4. Isso melhora a comunicação entre CPU e GPU, estabilizando o FPS em jogos pesados.
 
->sudo dnf install  ktorrent -y
+**Risco:** Baixo/Médio. Em placas X99, se o sistema não estiver em modo UEFI nativo, o PC pode dar tela preta no boot (exigindo um Reset de BIOS). Como o seu já validamos, o risco agora é inexistente.
 
-### Instalar KDE Weather
 
->sudo dnf install kweather -y
+```bash 
+sudo nano /etc/default/grub
+```
 
-### Instalar Telegram
+Mude/Adicione as linhas:
 
->sudo dnf install  telegram-desktop -y
 
-### Instalar Idle (para códigos rápidos de Python)
+    GRUB_TIMEOUT=5
+    GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+    GRUB_DEFAULT=saved
+    GRUB_DISABLE_SUBMENU=true
+    # GRUB_TERMINAL_OUTPUT="console"
+    GRUB_CMDLINE_LINUX="rhgb quiet"
+    GRUB_DISABLE_RECOVERY="true"
+    GRUB_ENABLE_BLSCFG=true
+    GRUB_GFXMODE=1920x1080
 
->sudo dnf install python3-idle -y
 
-### Instalar e rodar Cypress
+Atualize a configuração: 
 
->sudo dnf install npm nodejs git curl
 
-##### Rodando
+```bash
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+<br>
+### Drivers Broadcom (Wi-Fi)
+    sudo dnf install kernel-devel akmod-wl kmod-wl broadcom-wl
 
->npm install cypress --save-dev <br>
->npx cypress open
+---
 
-### Instalar Flatpack
+## 🛠️ 2. Otimizações de Performance (DNF & Kernel)
 
->flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+### Acelerar o Gerenciador de Pacotes (DNF)
 
-### Instalar mGBA
+```bash
+    sudo nano /etc/dnf/dnf.conf
 
->sudo flatpak install flathub io.mgba.mGBA -y
 
-### Instalar melonDS
+```
+Adicione ao final do arquivo:
 
->sudo flatpak install flathub net.kuribo64.melonDS -y
+```bash
+    max_parallel_downloads=10
+    fastestmirror=True
+```
 
-### Instalar Spotify (Flatpack)
 
->sudo flatpak install flathub com.spotify.Client -y
+### Otimização do Kernel (Sysctl)
 
-### Instalar Gnome Boxes
+- **O que é:** O sysctl é uma interface que permite ler e modificar os parâmetros do Kernel do Linux em tempo de execução. Esses parâmetros ficam localizados em /proc/sys/. Quando falamos de "Otimização via Sysctl", estamos ajustando variáveis de rede, gerenciamento de memória (virtual memory) e sistema de arquivos para que o sistema se comporte de forma mais ágil para o seu uso específico (desktop, gaming ou servidor).
+O que isso vai fazer no sistema?
 
->sudo flatpak install flathub org.gnome.Boxes -y
+- **O que faz no sistema:** Basicamente, ele altera as "regras de prioridade" do Kernel. Por exemplo:
 
-### Instalar ZSH
+    Swappiness: Define o quanto o sistema deve priorizar o uso da memória RAM antes de começar a jogar dados para o Swap (disco).
 
->sudo dnf install zsh util-linux-user git -y
->
->sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    Cache Pressure: Ajusta a rapidez com que o sistema recupera memória usada para cache de arquivos.
 
-### Configurar ZSH
+    Network Buffers: Melhora a latência e a velocidade de download ao aumentar o tamanho das janelas de recebimento de dados.
 
->cd .oh-my-zsh/plugins
+- **Nível de Risco:** Médio
 
->git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+<br>
+<br>
 
+>[!IMPORTANT]
+>Por que médio? Se você colocar valores extremos (como zerar o swap completamente ou mexer em limites de processos), o sistema pode sofrer de Kernel Panic ou travar quando a memória estiver cheia. É preciso usar valores testados pela comunidade.
+
+<br>
+<br>
+
+Editando o perfi
+
+```bash
+sudo nano /etc/sysctl.d/99-performance.conf
+```
+
+
+Cole o conteúdo
+
+```bash
+
+vm.swappiness=10
+vm.vfs_cache_pressure=50
+vm.dirty_ratio=10
+vm.dirty_background_ratio=5
+
+```
+
+<br>
+
+
+## 📦 3. Repositórios e Codecs
+
+### Habilitar RPM Fusion
+    sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm sudo dnf install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+### Plugins de Áudio e Vídeo
+    sudo dnf install gstreamer1-plugins-{bad-*,good-*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel && sudo dnf install lame* --exclude=lame-devel
+
+<br>
+
+
+
+
+## 💻 4. Apps e Desenvolvimento
+
+### Visual Studio Code
+    sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo' && sudo dnf install code -y
+
+### Node.js, Cypress e Python
+
+```bash
+sudo dnf install npm nodejs git curl python3-idle android-tools fastboot 
+```
+
+#### Instalação Cypress
+    
+```bash
+npm install cypress --save-dev
+```
+#### Rodar Cypress
+
+```bash
+npx cypress open
+```
+
+### Fontes e Apps Essenciais
+    sudo dnf install fira-code-fonts ibm-plex-mono-fonts jetbrains-mono-fonts-all steam ktorrent kweather 
+    flatpak remote-add --if-not-exists flathub [https://flathub.org/repo/flathub.flatpakrepo](https://flathub.org/repo/flathub.flatpakrepo)
+    sudo flatpak install flathub org.gnome.Boxes 
+
+<br>
+
+
+## 🐚 5. Customização do Terminal (ZSH)
+
+### Instalação e Oh My Zsh
+    sudo dnf install zsh util-linux-user 
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+### Plugins do ZSH
+
+```bash
+cd .oh-my-zsh/plugins
+```
+<br>
+
+```bash
+git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+```
 <!-- 
 
 Se o comando acima quebrar, olhar a documentação aqui
@@ -111,30 +225,27 @@ https://ohmyz.sh/#install
 
 -->
 
->cd ~ && sudo nano .zshrc
+<br>
 
->source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh <br>
->source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh <br>
->source ~/.oh-my-zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh <br>
->source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh <br>
->source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh <br>
-> 
-> 
-> plugins=( <br>
->    zsh-autosuggestions <br>
->    zsh-autocomplete <br>
->    zsh-syntax-highlighting <br>
->)
+```bash
+cd ~ && sudo nano .zshrc
 
-### Apps seguros para remover no Fedora KDE
+source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh <br>
+source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh <br>
+source ~/.oh-my-zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh <br>
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh <br>
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh <br>
+ 
+ 
+ plugins=( <br>
+    zsh-autosuggestions <br>
+    zsh-autocomplete <br>
+    zsh-syntax-highlighting <br>
+)
+```
 
-sudo dnf remove akregator.x86_64 akregator-libs.x86_64 kf5-akonadi-calendar.x86_64 kf5-akonadi-contacts.x86_64 kf5-akonadi-mime.x86_64 kf5-akonadi-notes.x86_64 kf5-akonadi-search.x86_64 kf5-akonadi-server.x86_64 kf5-akonadi-server-mysql.x86_64  kamera.x86_64 kamoso.x86_64 kdepim-addons.x86_64 krdc krfb kdepim-runtime.x86_64 kdepim-runtime-libs.x86_64 kmag.x86_64 kmahjongg.x86_64 kmail.x86_64 kmail-account-wizard.x86_64 kmail-libs.x86_64 kmines.x86_64 kmouth.x86_64 kolourpaint.x86_64 kolourpaint-libs.x86_64 kontact.x86_64 kontact-libs.x86_64 konversation.x86_64 korganizer.x86_64 korganizer-libs.x86_64 kwrite.x86_64 libreoffice-calc.x86_64 libreoffice-core.x86_64 libreoffice-data.x86_64 libreoffice-draw.x86_64 libreoffice-emailmerge.x86_64 libreoffice-graphicfilter.x86_64 libreoffice-gtk3.x86_64 libreoffice-gtk4.x86_64 libreoffice-help-en.x86_64 libreoffice-impress.x86_64 libreoffice-kf5.x86_64 libreoffice-langpack-en.x86_64 libreoffice-math.x86_64 libreoffice-ogltrans.x86_64 libreoffice-opensymbol-fonts.noarch libreoffice-pdfimport.x86_64 libreoffice-pyuno.x86_64 libreoffice-ure.x86_64 libreoffice-ure-common.x86_64 libreoffice-writer.x86_64 libreoffice-x11.x86_64 pim-data-exporter.x86_64 pim-data-exporter-libs.x86_64 pim-sieve-editor.x86_64
+<br>
 
-<!---
 
-Fonte Cypress
-
-https://docs.cypress.io/app/get-started/install-cypress
-https://docs.cypress.io/app/get-started/open-the-app
-
--->
+## 🧹 6. Limpeza de Bloatwares (KDE PIM / LibreOffice)
+    sudo dnf remove kf5-akonadi* kamera kamoso krdc krfb kmail* kmines kmouth kolourpaint* kontact* konversation korganizer* libreoffice* pim-data-exporter* pim-sieve-editor* akregator.x86_64 akregator-libs.x86_64 kf5-akonadi-calendar.x86_64 kf5-akonadi-contacts.x86_64 kf5-akonadi-mime.x86_64 kf5-akonadi-notes.x86_64 kf5-akonadi-search.x86_64 kf5-akonadi-server.x86_64 kf5-akonadi-server-mysql.x86_64  kamera.x86_64 kamoso.x86_64 kdepim-addons.x86_64 krdc krfb kdepim-runtime.x86_64 kdepim-runtime-libs.x86_64 kmag.x86_64 kmahjongg.x86_64 kmail.x86_64 kmail-account-wizard.x86_64 kmail-libs.x86_64 kmines.x86_64 kmouth.x86_64 kolourpaint.x86_64 kolourpaint-libs.x86_64 kontact.x86_64 kontact-libs.x86_64 konversation.x86_64 korganizer.x86_64 korganizer-libs.x86_64 kwrite.x86_64 libreoffice-calc.x86_64 libreoffice-core.x86_64 libreoffice-data.x86_64 libreoffice-draw.x86_64 libreoffice-emailmerge.x86_64 libreoffice-graphicfilter.x86_64 libreoffice-gtk3.x86_64 libreoffice-gtk4.x86_64 libreoffice-help-en.x86_64 libreoffice-impress.x86_64 libreoffice-kf5.x86_64 libreoffice-langpack-en.x86_64 libreoffice-math.x86_64 libreoffice-ogltrans.x86_64 libreoffice-opensymbol-fonts.noarch libreoffice-pdfimport.x86_64 libreoffice-pyuno.x86_64 libreoffice-ure.x86_64 libreoffice-ure-common.x86_64 libreoffice-writer.x86_64 libreoffice-x11.x86_64 pim-data-exporter.x86_64 pim-data-exporter-libs.x86_64 pim-sieve-editor.x86_64
