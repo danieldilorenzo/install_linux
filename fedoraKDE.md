@@ -255,9 +255,7 @@ plugins=(
     zsh-syntax-highlighting
 )
 ```
-
 <br>
-
 
 ## 🧹 6. Limpeza de Bloatwares
 
