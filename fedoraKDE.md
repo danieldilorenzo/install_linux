@@ -10,24 +10,29 @@ Guia de configuração otimizado para o hardware Xeon E5 2650 V4 e GPU RX 6600.
 ## 📑 Índice de Instalação e Configuração
 
 * 🖥️ **1. Hardware e Boot**
-    * Above 4G Decoding
-    * Resizable BAR (Ajuste Visual do GRUB)
+    * [Above 4G Decoding](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#above-4g-decoding)
+    * [Resizable BAR (Ajuste Visual do GRUB)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#resizable-bar-ajuste-visual-do-grub)
+    * [Drivers Broadcom (Wi-Fi)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#drivers-broadcom-wi-fi)
 * 🛠️ **2. Otimizações de Performance (DNF & Kernel)**
-    * Acelerar o Gerenciador de Pacotes (DNF)
-    * Otimização do Kernel (Sysctl)
+    * [Acelerar o Gerenciador de Pacotes (DNF)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#acelerar-o-gerenciador-de-pacotes-dnf)
+    * [Otimização do Kernel (Sysctl)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#otimiza%C3%A7%C3%A3o-do-kernel-sysctl)
+
 * 📦 **3. Repositórios e Codecs**
-    *  Habilitar RPM Fusion
-    * Plugins de Áudio e Vídeo
+    * [Habilitar RPM Fusion](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#habilitar-rpm-fusion)
+    * [Plugins de Áudio e Vídeo](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#plugins-de-%C3%A1udio-e-v%C3%ADdeo)
 * 💻 **4. Apps e Desenvolvimento**
-    * Visual Studio Code
-    * Node.js, Cypress e Python
-    * Instalação Cypress
-    * Rodar Cypress
-    * Fontes e Apps Essenciais
+    * [Visual Studio Code](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#visual-studio-code)
+    * [Node.js, Cypress e Python](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#nodejs-cypress-e-python)
+    * [Instalação Cypress](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#instala%C3%A7%C3%A3o-cypress)
+    * [Rodar Cypress](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#rodar-cypress)
+    * [Fontes e Apps Essenciais](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#fontes-e-apps-essenciais)
 * 🐚 **5. Customização do Terminal (ZSH)**
-    * Instalação e Oh My Zsh
-    * Plugins do ZSH
-* 🧹 **6. Limpeza de Bloatwares (KDE PIM / LibreOffice)**
+    * [Instalação e Oh My Zsh](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#instala%C3%A7%C3%A3o-e-oh-my-zsh)
+    * [Plugins do ZSH](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#plugins-do-zsh)
+* 🧹 **6. Limpeza de Bloatwares**
+    * [Removendo apps não usados](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#removendo-apps-n%C3%A3o-usados)
+
+<br>
 
 ## 🖥️ 1. Hardware e Boot
 
