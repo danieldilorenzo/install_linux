@@ -210,7 +210,7 @@ sudo zypper remove thermald
 <br>
 
 
-## Gerenciando Snapper e Rollback
+## 🦎 Gerenciando Snapper e Rollback
 
 ### 1. O que é?
 O **Snapper** é uma ferramenta de gerenciamento de snapshots (instantâneos) para sistemas de arquivos Linux. No openSUSE, ele vem integrado nativamente ao sistema de arquivos **Btrfs**, permitindo criar pontos de restauração do sistema de forma eficiente e automática.
@@ -738,85 +738,3 @@ rm -rf ~/.cache/thumbnails/*
 
 
 ```
-
-
-# 🦎 Gerenciando Snapper e Rollback
-
-## 1. O que é?
-O **Snapper** é uma ferramenta de gerenciamento de snapshots (instantâneos) para sistemas de arquivos Linux. No openSUSE, ele vem integrado nativamente ao sistema de arquivos **Btrfs**, permitindo criar pontos de restauração do sistema de forma eficiente e automática.
-
-## 2. O que faz no sistema?
-Ele funciona como um seguro para o seu sistema operacional:
-* **Snapshots Automáticos (Timeline):** Registra o estado do sistema periodicamente (de hora em hora).
-* **Snapshots de Transação (Zypper):** Cria um ponto de restauração antes e depois de qualquer instalação ou atualização de pacotes.
-* **Rollback Nativo:** Permite reverter o sistema inteiro para um estado anterior diretamente pelo menu de boot (GRUB).
-* **Diferenciação de Arquivos:** Permite comparar o que mudou em arquivos de configuração entre dois momentos específicos.
-
-## 3. Riscos
-
-> [!CAUTION]
-> **Snapshots não são backups!** Eles residem no mesmo disco físico. Se o seu SSD falhar, você perderá o sistema e os snapshots. Para segurança real, mantenha backups em drives externos ou nuvem.
-
-* **Consumo de Espaço:** Sem limites configurados, os snapshots podem ocupar todo o espaço do disco.
-* **Fragmentação:** Em discos mecânicos (HDDs), o excesso de snapshots pode causar fragmentação; em SSDs, o impacto é desprezível.
-
----
-
-## 4. Guia de Configuração (Otimização)
-
-Para evitar o consumo excessivo de disco, edite o arquivo de configuração da partição raiz:
-`sudo nano /etc/snapper/configs/root`
-
-### Configurações Recomendadas para SSDs
-
-| Parâmetro | Valor Sugerido | Descrição |
-| :--- | :--- | :--- |
-| **TIMELINE_LIMIT_HOURLY** | `3` | Mantém as últimas 3 horas de uso. |
-| **TIMELINE_LIMIT_DAILY** | `5` | Mantém um snapshot por dia dos últimos 5 dias. |
-| **TIMELINE_LIMIT_WEEKLY** | `1` | Mantém apenas um registro da semana anterior. |
-| **TIMELINE_LIMIT_MONTHLY** | `0` | Desativa retenção mensal (recomendado para Rolling Release). |
-| **NUMBER_LIMIT** | `4-10` | Mantém entre 4 e 10 pares de snapshots do Zypper. |
-| **NUMBER_LIMIT_IMPORTANT**| `4` | Retém snapshots de atualizações grandes/críticas. |
-| **FREE_LIMIT** | `0.2` | Inicia limpeza forçada se o espaço livre for menor que 20%. |
-
-> [!TIP]
-> Após salvar, você pode forçar a limpeza imediata com os comandos:
-> `sudo snapper cleanup timeline` e `sudo snapper cleanup number`
-
----
-
-## 5. Procedimento de Emergência: O Rollback 🔄
-
-Se o sistema quebrar ou não iniciar corretamente após uma atualização ou modificação:
-
-### Parte A: O Boot em modo Snapshot
-1. Reinicie o computador.
-2. No menu do GRUB (tela de boot), selecione a opção **"Start bootloader from a read-only snapshot"**.
-3. Escolha um snapshot da lista (geralmente o último funcional).
-4. O sistema iniciará em modo de **apenas leitura**. Verifique se o erro desapareceu.
-
-### Parte B: Tornar a Reversão Permanente
-Uma vez dentro do sistema (ainda no modo leitura):
-1. Abra o terminal.
-2. Execute o comando principal de restauração:
-   ```bash
-   sudo snapper rollback
-   ```
-3. O Snapper definirá este snapshot como o novo estado padrão ("root") do sistema.
-4. Reinicie o computador para sair do modo de leitura e voltar ao sistema normal:
-   ```bash
-   sudo reboot
-   ```
-
----
-
-## 6. Comandos Úteis de Diagnóstico e Manutenção
-
-| Comando | O que faz? |
-| :--- | :--- |
-| `snapper list` | Exibe todos os snapshots, IDs, datas e descrições. |
-| `snapper diff ID1..ID2` | Mostra a diferença de conteúdo entre dois snapshots. |
-| `snapper create -d "Nome"` | Cria um snapshot manual com uma descrição. |
-| `sudo btrfs filesystem du -s /` | Calcula o uso de disco real (Btrfs). |
-| `sudo snapper delete [ID]` | Remove um snapshot manualmente. |
-| `sudo systemctl status snapper-cleanup.timer` | Verifica se o serviço de limpeza automática está ativo. |
