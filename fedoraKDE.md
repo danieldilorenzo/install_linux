@@ -247,7 +247,6 @@ cd ~ && sudo nano .zshrc
 Colar
 
 ```bash
-source ~/.zshrc
 
 plugins=(
     git
