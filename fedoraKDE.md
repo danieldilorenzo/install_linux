@@ -254,6 +254,9 @@ plugins=(
     zsh-syntax-highlighting
 )
 
+# Fazer a sugestão priorizar o que usamos por último
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
+
 # Sources manuais para garantir o funcionamento
 source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
