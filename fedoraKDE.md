@@ -247,13 +247,21 @@ cd ~ && sudo nano .zshrc
 Colar
 
 ```bash
-
 plugins=(
     git
     zsh-autosuggestions
     zsh-autocomplete
     zsh-syntax-highlighting
 )
+
+# Sources manuais para garantir o funcionamento
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# Colorindo o autocomplete
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
+
 ```
 <br>
 
