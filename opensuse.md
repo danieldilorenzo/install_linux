@@ -654,10 +654,10 @@ curl -L https://github.com/atar-axis/xpadneo/archive/master.zip -o xpadneo.zip &
 
 Mesmo com o driver, o controle de Xbox Series às vezes briga com o ERTM (um protocolo de retransmissão do Bluetooth). Para garantir que ele não fique desconectando:
 
-Execute este comando para desativar o ERTM permanentemente:
+Execute este comando para colocar o módulo para carregar, e desativar o ERTM permanentemente:
 
 ```bash
-echo 'options bluetooth disable_ertm=1' | sudo tee /etc/modprobe.d/xbox_bt.conf
+echo "hid_xpadneo" | sudo tee /etc/modules-load.d/xpadneo.conf && echo 'options bluetooth disable_ertm=1' | sudo tee /etc/modprobe.d/xbox_bt.conf
 ```
 
 Após isso, ele deve pedir para reiniciar o PC / Notebook. Depois disso, já está pronto para usar.
