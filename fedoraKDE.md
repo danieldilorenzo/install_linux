@@ -26,11 +26,16 @@ Guia de configuração otimizado para o hardware Xeon E5 2650 V4 e GPU RX 6600.
     * [Instalação Cypress](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#instala%C3%A7%C3%A3o-cypress)
     * [Rodar Cypress](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#rodar-cypress)
     * [Fontes e Apps Essenciais](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#fontes-e-apps-essenciais)
+    * [Instalar ferramentas para controle Xbox](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#instalar-ferramentas-para-controle-xbox)
+
 * 🐚 **5. Customização do Terminal (ZSH)**
     * [Instalação e Oh My Zsh](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#instala%C3%A7%C3%A3o-e-oh-my-zsh)
     * [Plugins do ZSH](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#plugins-do-zsh)
+ 
 * 🧹 **6. Limpeza de Bloatwares**
     * [Removendo apps não usados](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#removendo-apps-n%C3%A3o-usados)
+    * [Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)]([https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#script-para-atualiza%C3%A7%C3%A3o-e-limpeza-do-sistema-sistema-flatpak-e-firmware)
+
 
 <br>
 
@@ -213,6 +218,42 @@ npx cypress open
 <br>
 
 
+
+## Instalar ferramentas para controle Xbox
+
+- **O que é:** Configurar o sistema para garantir a total compatibilidade com o controle do Xbox Series S
+
+Instalando dependências
+
+```bash
+sudo dnf install dkms make kernel-devel kernel-headers bluez-libs-devel
+```
+
+
+Instalando o xpadneo
+
+```bash
+curl -L https://github.com/atar-axis/xpadneo/archive/master.zip -o xpadneo.zip && unzip xpadneo.zip && cd xpadneo-master && sudo ./install.sh
+```
+
+Mesmo com o driver, o controle de Xbox Series às vezes briga com o ERTM (um protocolo de retransmissão do Bluetooth). Para garantir que ele não fique desconectando:
+
+ Execute este comando para colocar o módulo para carregar, e desativar o ERTM permanentemente:
+
+
+```bash
+
+echo "hid_xpadneo" | sudo tee /etc/modules-load.d/xpadneo.conf && echo 'options bluetooth disable_ertm=1' | sudo tee /etc/modprobe.d/xbox_bt.conf
+
+``` 
+
+Após isso, ele deve pedir para reiniciar o PC / Notebook. Depois disso, já está pronto para usar.
+
+<br>
+
+
+
+
 ## 🐚 5. Customização do Terminal (ZSH)
 
 ### Instalação e Oh My Zsh
@@ -274,4 +315,77 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 
 ```bash
 sudo dnf remove kf5-akonadi* kamera kamoso krdc krfb kmail* kmines kmouth kolourpaint* kontact* konversation korganizer* libreoffice* pim-data-exporter* pim-sieve-editor* akregator.x86_64 akregator-libs.x86_64 kf5-akonadi-calendar.x86_64 kf5-akonadi-contacts.x86_64 kf5-akonadi-mime.x86_64 kf5-akonadi-notes.x86_64 kf5-akonadi-search.x86_64 kf5-akonadi-server.x86_64 kf5-akonadi-server-mysql.x86_64  kamera.x86_64 kamoso.x86_64 kdepim-addons.x86_64 krdc krfb kdepim-runtime.x86_64 kdepim-runtime-libs.x86_64 kmag.x86_64 kmahjongg.x86_64 kmail.x86_64 kmail-account-wizard.x86_64 kmail-libs.x86_64 kmines.x86_64 kmouth.x86_64 kolourpaint.x86_64 kolourpaint-libs.x86_64 kontact.x86_64 kontact-libs.x86_64 konversation.x86_64 korganizer.x86_64 korganizer-libs.x86_64 kwrite.x86_64 libreoffice-calc.x86_64 libreoffice-core.x86_64 libreoffice-data.x86_64 libreoffice-draw.x86_64 libreoffice-emailmerge.x86_64 libreoffice-graphicfilter.x86_64 libreoffice-gtk3.x86_64 libreoffice-gtk4.x86_64 libreoffice-help-en.x86_64 libreoffice-impress.x86_64 libreoffice-kf5.x86_64 libreoffice-langpack-en.x86_64 libreoffice-math.x86_64 libreoffice-ogltrans.x86_64 libreoffice-opensymbol-fonts.noarch libreoffice-pdfimport.x86_64 libreoffice-pyuno.x86_64 libreoffice-ure.x86_64 libreoffice-ure-common.x86_64 libreoffice-writer.x86_64 libreoffice-x11.x86_64 pim-data-exporter.x86_64 pim-data-exporter-libs.x86_64 pim-sieve-editor.x86_64
+```
+
+<br>
+
+## Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)
+
+
+```bash
+
+#!/bin/bash
+
+# Cores para facilitar a leitura
+VERDE='\033[0;32m'
+AZUL='\033[0;34m'
+RESET='\033[0m'
+
+
+    echo -e " "
+    echo -e "${AZUL}--- Iniciando Atualização Completa ---${RESET}"
+    echo -e " "
+
+# 1. Detectar o Gerenciador de Pacotes
+if [ -f /etc/fedora-release ]; then
+    echo -e "${VERDE}[1/4] Atualizando pacotes do sistema (DNF)...${RESET}"
+    # No Fedora, mantemos o -y se você preferir, ou removemos para ver o que será feito
+    sudo dnf upgrade --refresh
+elif [ -f /etc/os-release ] && grep -q "opensuse" /etc/os-release; then
+    echo -e "${VERDE}[1/4] Atualizando pacotes do sistema (Zypper)...${RESET}"
+    sudo zypper ref
+    # REMOVIDO o -y para que ele pare nos conflitos e peça sua escolha (1, 2, 3...)
+    sudo zypper dup
+else
+    echo "Sistema não identificado."
+fi
+
+# 2. Atualizar Flatpaks
+if command -v flatpak &> /dev/null; then
+    echo -e " "
+    echo -e "${VERDE}[2/4] Atualizando Flatpaks...${RESET}"
+    flatpak update -y
+    flatpak uninstall --unused -y
+fi
+
+# 3. Atualizar Firmware
+if command -v fwupdmgr &> /dev/null; then
+    echo -e " "
+    echo -e "${VERDE}[3/4] Verificando atualizações de Firmware...${RESET}"
+    fwupdmgr get-updates
+    fwupdmgr update
+fi
+
+
+# 4. Limpeza de Cache e Logs
+    echo -e " "
+    echo -e "${VERDE}[4/4] Iniciando limpeza de primavera...${RESET}"
+
+# Limpa cache do gerenciador de pacotes
+if [ -f /etc/fedora-release ]; then
+    sudo dnf clean all
+elif [ -f /etc/os-release ] && grep -q "opensuse" /etc/os-release; then
+    sudo zypper clean -a
+fi
+
+# Limpa logs antigos (mantém apenas os últimos 2 dias)
+sudo journalctl --vacuum-time=2d
+
+# Limpa cache de miniaturas do usuário
+rm -rf ~/.cache/thumbnails/*
+    echo -e " "
+    echo -e "${AZUL}--- Sistema Atualizado e Limpo! ---${RESET}"
+    echo -e " "
+
+
 ```
