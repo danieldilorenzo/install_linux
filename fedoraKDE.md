@@ -34,7 +34,7 @@ Guia de configuração otimizado para o hardware Xeon E5 2650 V4 e GPU RX 6600.
  
 * 🧹 **6. Limpeza de Bloatwares**
     * [Removendo apps não usados](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#removendo-apps-n%C3%A3o-usados)
-    * [Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)]([https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#script-para-atualiza%C3%A7%C3%A3o-e-limpeza-do-sistema-sistema-flatpak-e-firmware)
+    * [Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#script-para-atualiza%C3%A7%C3%A3o-e-limpeza-do-sistema-sistema-flatpak-e-firmware)
 
 
 <br>
