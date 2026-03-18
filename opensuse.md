@@ -42,7 +42,6 @@
     * [Instalar KDE Imagewriter](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-imagewriter)
     * [Instalar KDE Connect](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-connect)
     * [Instalar ferramentas para controle Xbox](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-ferramentas-para-controle-xbox)
-]
 
 * 🎵 **Multimídia & Apps KDE**
     * [Instalar Elisa](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-elisa)
