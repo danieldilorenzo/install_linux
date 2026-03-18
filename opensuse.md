@@ -468,13 +468,23 @@ cd ~ && sudo nano .zshrc
 
 ```bash
 plugins=(
-  git
-  zsh-autosuggestions
-  zsh-autocomplete
-  zsh-syntax-highlighting
+    git
+    zsh-autosuggestions
+    zsh-autocomplete
+    zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
+# Fazer a sugestão priorizar o que usamos por último
+ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
+
+# Sources manuais para garantir o funcionamento
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# Deixar as sugestões do autocomplete em ciano
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
+
 ```
 
 <br>
