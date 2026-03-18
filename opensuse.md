@@ -41,6 +41,8 @@
     * [Instalar Gerenciador de Partiçōes](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-gerenciador-de-parti%C3%A7%C3%B5es)
     * [Instalar KDE Imagewriter](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-imagewriter)
     * [Instalar KDE Connect](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-connect)
+    * [Instalar ferramentas para controle Xbox](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-ferramentas-para-controle-xbox)
+]
 
 * 🎵 **Multimídia & Apps KDE**
     * [Instalar Elisa](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-elisa)
@@ -621,6 +623,35 @@ sudo zypper in imagewriter
 ```bash
 sudo zypper in kdeconnect-kde
 ```
+
+<br>
+
+## Instalar ferramentas para controle Xbox
+
+- **O que é:** Configurar o sistema para garantir a total compatibilidade com o controle do Xbox Series S
+
+Instalando dependências
+
+```bash
+sudo zypper install make bluez-devel kernel-devel kernel-default-devel curl dkms
+```
+
+
+Instalando o xpadneo
+
+```bash
+curl -L https://github.com/atar-axis/xpadneo/archive/master.zip -o xpadneo.zip && unzip xpadneo.zip && cd xpadneo-master && sudo ./install.sh
+```
+
+Mesmo com o driver, o controle de Xbox Series às vezes briga com o ERTM (um protocolo de retransmissão do Bluetooth). Para garantir que ele não fique desconectando:
+
+Execute este comando para desativar o ERTM permanentemente:
+
+```bash
+echo 'options bluetooth disable_ertm=1' | sudo tee /etc/modprobe.d/xbox_bt.conf
+```
+
+Após isso, ele deve pedir para reiniciar o PC / Notebook. Depois disso, já está pronto para usar.
 
 <br>
 
