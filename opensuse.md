@@ -9,6 +9,7 @@
     * [Instalar Zram Generator](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-zram-generator)
     * [Otimização do Kernel (sysctl)](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#otimiza%C3%A7%C3%A3o-do-kernel-sysctl)
     * [Instalar Thermald](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-thermald)
+    * [Arrumar periféricos que não iniciam com o sistema]
 
 * 🔄 **Backup e rollback**
     * [Gerenciando Snapper e Rollback](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#gerenciando-snapper-e-rollback)
@@ -209,6 +210,46 @@ sudo zypper remove thermald
 ```
 
 <br>
+
+
+
+## Arrumar periféricos que não iniciam com o sistema
+
+
+- **O que acontece:** Ao ligar o computador, o teclado e o mouse conectados via Hub USB permanecem desligados (sem LEDs acesos) e não respondem, sendo necessário reiniciar ou desconectar e conectar novamente para funcionarem.
+
+- **Porque acontece:** O Kernel Linux, por padrão, tenta economizar energia suspendendo portas USB que ele interpreta como ociosas logo nos primeiros segundos do boot (*Autosuspend*). Isso pode impedir que o Hub "acorde" a tempo de alimentar os periféricos.
+
+- **Resolução: ** A forma mais definitiva de resolver é desativar o autosuspend globalmente através dos parâmetros do Kernel.
+
+### 1. Editar o arquivo de configuração do GRUB
+
+Abra o terminal e execute:
+
+```bash
+sudo nano /etc/default/grub
+```
+
+Localize a linha ```GRUB_CMDLINE_LINUX_DEFAULT``` e adicione o parâmetro usbcore.autosuspend=-1 ao final das opções, dentro das aspas.
+
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="splash=silent mitigations=auto quiet security=selinux selinux=1 amdgpu.ppfeaturemask=0xffffffff usbcore.autosuspend=-1"
+```
+
+No meu, ficou
+
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="splash=silent mitigations=auto quiet security=selinux selinux=1 amdgpu.ppfeaturemask=0xffffffff usbcore.autosuspend=-1"
+```
+
+Aplicar as configurações
+
+```bash
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+
+Reiniciar
+
 
 
 ## 🦎 Gerenciando Snapper e Rollback
