@@ -222,7 +222,6 @@ sudo zypper remove thermald
 
 - **Resolução:** A forma mais definitiva de resolver é desativar o autosuspend globalmente através dos parâmetros do Kernel.
 
-### 1. Editar o arquivo de configuração do GRUB
 
 <br>
 Abra o terminal e execute:
