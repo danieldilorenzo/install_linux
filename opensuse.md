@@ -224,33 +224,38 @@ sudo zypper remove thermald
 
 ### 1. Editar o arquivo de configuração do GRUB
 
+<br>
 Abra o terminal e execute:
 
 ```bash
 sudo nano /etc/default/grub
 ```
 
+<br>
 Localize a linha ```GRUB_CMDLINE_LINUX_DEFAULT``` e adicione o parâmetro usbcore.autosuspend=-1 ao final das opções, dentro das aspas.
 
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="splash=silent mitigations=auto quiet security=selinux selinux=1 amdgpu.ppfeaturemask=0xffffffff usbcore.autosuspend=-1"
 ```
 
+<br>
 No meu, ficou
 
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="splash=silent mitigations=auto quiet security=selinux selinux=1 amdgpu.ppfeaturemask=0xffffffff usbcore.autosuspend=-1"
 ```
 
+<br>
 Aplicar as configurações
 
 ```bash
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
+<br>
 
 Reiniciar
 
-
+<br>
 
 ## 🦎 Gerenciando Snapper e Rollback
 
