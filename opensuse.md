@@ -48,7 +48,7 @@
 
 * 🎮 **Guia Técnico: GE-Proton no Linux**
 
-   * [Proton: Instalando e configurando] 
+   * [Proton: Instalando e configurando](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#proton-instalando-e-configurando)
 
 * 🎵 **Multimídia & Apps KDE**
     * [Instalar Elisa](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-elisa)
@@ -735,7 +735,11 @@ Após isso, ele deve pedir para reiniciar o PC / Notebook. Depois disso, já est
 
 O **GE-Proton** é uma ferramenta essencial para quem joga no Linux, especialmente em distribuições *rolling release* como o **openSUSE Tumbleweed** ou sistemas atualizados como o **Fedora**.
 
+<br>
+
 ---
+
+<br>
 
 - **O que é:** O **GE-Proton** (GloriousEggroll Proton) é uma versão customizada do Proton da Valve. Ele é mantido por Thomas Crider (GloriousEggroll), um engenheiro da Red Hat. Ele combina as tecnologias da Valve com patches experimentais e correções que ainda não chegaram à versão oficial.
 
@@ -756,6 +760,7 @@ A forma mais simples de gerenciar versões no GNOME (openSUSE/Fedora) é via **F
     ```bash
     flatpak install flathub net.davidotti.emupower.ProtonUp-Qt
     ```
+    
 2.  **Configuração do Diretório:**
     No openSUSE (RPM), garanta que o diretório de instalação no app aponte para:
     `~/.local/share/Steam/compatibilitytools.d/`
