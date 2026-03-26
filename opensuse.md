@@ -369,11 +369,15 @@ sudo zypper in opi
 Instalando codecs, Chrome, VSCode e Steam e fontes da Microsoft:
 
 ```bash
-opi codecs           # Codecs de áudio / vídeo
-opi google-chrome    # Google Chrome
-opi vscode           # Visual Studio Code
-opi steam            # Steam
-opi ms-fonts         # Fontes da Microsoft
+opi codecs                    # Codecs de áudio / vídeo
+opi google-chrome             # Google Chrome
+opi vscode                    # Visual Studio Code
+opi steam                     # Steam
+opi ms-fonts                  # Fontes da Microsoft
+opi android-tools             # Ferramentas ADB
+opi android-udev-rules        # Android Udev Rulas
+
+
 ```
 
 <br>
