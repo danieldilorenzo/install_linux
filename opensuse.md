@@ -46,6 +46,10 @@
     * [Instalar KDE Connect](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-connect)
     * [Instalar ferramentas para controle Xbox](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-ferramentas-para-controle-xbox)
 
+* 🎮 **Guia Técnico: GE-Proton no Linux**
+
+   * [Proton: Instalando e configurando] 
+
 * 🎵 **Multimídia & Apps KDE**
     * [Instalar Elisa](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-elisa)
     * [Instalar Ktorrent](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-ktorrent)
@@ -723,6 +727,69 @@ echo "hid_xpadneo" | sudo tee /etc/modules-load.d/xpadneo.conf && echo 'options 
 ```
 
 Após isso, ele deve pedir para reiniciar o PC / Notebook. Depois disso, já está pronto para usar.
+
+<br>
+
+## Proton: Instalando e configurando
+
+
+O **GE-Proton** é uma ferramenta essencial para quem joga no Linux, especialmente em distribuições *rolling release* como o **openSUSE Tumbleweed** ou sistemas atualizados como o **Fedora**.
+
+---
+
+- **O que é:** O **GE-Proton** (GloriousEggroll Proton) é uma versão customizada do Proton da Valve. Ele é mantido por Thomas Crider (GloriousEggroll), um engenheiro da Red Hat. Ele combina as tecnologias da Valve com patches experimentais e correções que ainda não chegaram à versão oficial.
+
+- **Pra que serve:** Ele atua como uma **camada de compatibilidade** avançada. Sua função é traduzir as instruções de jogos feitos para Windows (DirectX) para uma linguagem que o Linux entende (Vulkan). É o que permite que jogos como *Skyrim*, *Skyrim Special Edition* e *Cult of the Lamb* rodem com performance nativa no seu hardware.
+
+- **Benefícios:** 
+    * **Codecs de Vídeo:** Corrige problemas de telas pretas ou coloridas em cinemáticas (muito comum em jogos da Bethesda).
+    * **FSR Integrado:** Permite usar o *AMD FidelityFX Super Resolution* em qualquer jogo, excelente para ganhar FPS em GPUs integradas como a **Intel Iris Xe**.
+    * **Patches de Performance:** Inclui versões mais recentes do **DXVK** (DirectX 9/10/11 para Vulkan) e **VKD3D** (DirectX 12 para Vulkan).
+    * **Estabilidade:** Resolve bugs de áudio e "crashes" específicos que a Valve pode demorar a atualizar na versão estável.
+
+
+- **Como Instalar:** 
+
+A forma mais simples de gerenciar versões no GNOME (openSUSE/Fedora) é via **Flatpak**:
+
+1.  **Instalação do Gerenciador:**
+    ```bash
+    flatpak install flathub net.davidotti.emupower.ProtonUp-Qt
+    ```
+2.  **Configuração do Diretório:**
+    No openSUSE (RPM), garanta que o diretório de instalação no app aponte para:
+    `~/.local/share/Steam/compatibilitytools.d/`
+
+3.  **Adicionar Versão:** Clique em **"Add version"**, selecione **"GE-Proton"** e escolha a versão mais recente (ex: `GE-Proton10-34`).
+
+<br>
+
+> **Dica para openSUSE (Fix de Caminho):**
+> Se o Steam não reconhecer a versão instalada, rode este comando no terminal para unir os diretórios:
+> ```bash
+> mkdir -p ~/.steam/root/compatibilitytools.d
+> ln -s ~/.local/share/Steam/compatibilitytools.d/* ~/.steam/root/compatibilitytools.d/
+> ```
+
+<br>
+
+- **Como Configurar na Steam:**
+
+<br>
+
+Após instalar e reiniciar a Steam completamente:
+
+1.  Vá na sua **Biblioteca**.
+2.  Clique com o botão direito no jogo > **Propriedades**.
+3.  Acesse a aba **Compatibilidade**.
+4.  Marque a caixa: **"Forçar o uso de uma ferramenta de compatibilidade do Steam Play específica"**.
+5.  Selecione o **GE-Proton** desejado (geralmente ele aparece no final da lista).
+
+<br>
+
+### 🚀 Dica de Performance (Otimização Extra)
+Para garantir que o sistema priorize o jogo, use o **GameMode** nas opções de inicialização (aba Geral):
+`gamemoderun %command%`
 
 <br>
 
