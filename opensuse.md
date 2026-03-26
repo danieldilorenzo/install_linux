@@ -37,6 +37,8 @@
     * [Instalar Papirus Icons & Folders](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-papirus-icons--folders)
 
 * 🛠️ **Ferramentas & Utilidades**
+
+    * [Instalar Flatpak](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-flatpak)
     * [Instalar Idle](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-idle)
     * [Instalar Gnome Boxes](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-gnome-boxes)
     * [Instalar Gerenciador de Partiçōes](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-gerenciador-de-parti%C3%A7%C3%B5es)
@@ -628,6 +630,17 @@ sudo zypper in papirus-icon-theme papirus-folders
 
 <br>
 
+## Instalar Flatpak
+
+- **O que é:** Sistema de gerenciamento de pacotes focado em portabilidade e sandboxing
+
+```bash
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+```
+
+
+
+
 ## Instalar Idle 
 
 - **O que é:** Editor simples para códigos de Python.
@@ -640,7 +653,7 @@ sudo zypper in python3-idle
 
 
 ## Instalar Gnome Boxes
-.
+
 - **O que é:** Programa de máquina virtual
   
 ```bash
