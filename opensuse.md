@@ -10,6 +10,7 @@
     * [Otimização do Kernel (sysctl)](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#otimiza%C3%A7%C3%A3o-do-kernel-sysctl)
     * [Instalar Thermald](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-thermald)
     * [Arrumar periféricos que não iniciam com o sistema](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#arrumar-perif%C3%A9ricos-que-n%C3%A3o-iniciam-com-o-sistema)
+    * [Arrumar cedilha no Chrome e VSCode](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#arrumar-cedilha-no-chrome-e-vscode)
 
 * 🔄 **Backup e rollback**
     * [Gerenciando Snapper e Rollback](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#gerenciando-snapper-e-rollback)
@@ -259,6 +260,93 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 <br>
 
 Reiniciar
+
+<br>
+
+## Arrumar cedilha no Chrome e VSCode
+
+
+Este guia resolve o problema do caractere `ć` em vez de `ç` ao usar a combinação `'` + `c` em teclados de layout **EUA Internacional (com dead keys)**. 
+
+O problema ocorre porque aplicativos baseados em Chromium/Electron (Chrome, VS Code, Discord) tentam rodar nativamente no Wayland e ignoram as regras de composição do sistema.
+
+---
+
+### 🚀 Passo 1: Criar os Scripts de Execução (Wrappers)
+
+Vamos criar arquivos que "envelopam" os originais com as variáveis de ambiente corretas.
+
+#### 1.1 Para o Google Chrome:
+1. Abra o terminal e crie o arquivo:
+   `nano ~/.local/bin/google-chrome-stable`
+
+2. Cole o conteúdo abaixo:
+
+```bash
+#!/bin/bash
+export GTK_IM_MODULE=cedilla
+export QT_IM_MODULE=cedilla
+export XMODIFIERS="@im=cedilla"
+exec /usr/bin/google-chrome-stable --ozone-platform=x11 --gtk-im-module=cedilla --im-module=cedilla "$@"
+```
+3. Salve (Ctrl+O, Enter) e saia (Ctrl+X).
+
+4. Dê permissão de execução:
+
+```bash
+chmod +x ~/.local/bin/google-chrome-stable
+```
+#### 1. 2 Para o Vscode:
+
+1. Abra o terminal e crie o arquivo:
+
+   `nano ~/.local/bin/code`
+
+2. Cole o conteúdo abaixo:
+```bash
+#!/bin/bash
+export GTK_IM_MODULE=cedilla
+export QT_IM_MODULE=cedilla
+export XMODIFIERS="@im=cedilla"
+exec /usr/bin/code --ozone-platform=x11 --gtk-im-module=cedilla --im-module=cedilla "$@"
+```
+
+3. Salve (Ctrl+O, Enter) e saia (Ctrl+X).
+
+4. Dê permissão de execução:
+
+`chmod +x ~/.local/bin/code`
+
+<br>
+
+### 🖥️ Passo 2: Ajustar os Atalhos do Menu (.desktop)
+
+Para que o sistema use os scripts acima ao clicar nos ícones (e não os originais do sistema), precisamos criar versões locais dos atalhos.
+
+2.1 Copiar os atalhos originais para sua pasta local:
+
+```bash
+mkdir -p ~/.local/share/applications
+cp /usr/share/applications/google-chrome.desktop ~/.local/share/applications/
+cp /usr/share/applications/code.desktop ~/.local/share/applications/
+```
+
+2.2 Alterar o comando de execução nos atalhos:
+Execute estes comandos para substituir automaticamente o caminho para o seu script:
+
+```bash
+sed -i "s|Exec=/usr/bin/google-chrome-stable|Exec=$HOME/.local/bin/google-chrome-stable|g" ~/.local/share/applications/google-chrome.desktop
+sed -i "s|Exec=/usr/bin/code|Exec=$HOME/.local/bin/code|g" ~/.local/share/applications/code.desktop
+```
+
+2.3 Atualizar o banco de dados de aplicativos:
+
+`update-desktop-database ~/.local/share/applications`
+
+
+✅ Por que isso funciona?
+
+A flag --ozone-platform=x11 força o aplicativo a rodar via XWayland. Isso é necessário porque o suporte nativo do Wayland para o Chromium ainda tem bugs com o "International Keyboard with Dead Keys". Ao forçar o X11, o aplicativo passa a respeitar as regras de acentuação (IM Modules) configuradas no Linux.
 
 <br>
 
