@@ -9,7 +9,7 @@
     * [Instalar Zram Generator](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-zram-generator)
     * [Otimização do Kernel (sysctl)](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#otimiza%C3%A7%C3%A3o-do-kernel-sysctl)
     * [Acelerar Downloads do Zypper](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#acelerar-downloads-do-zypper)
-    * [Ajuste de Desligamento Rápido](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#arrumar-perif%C3%A9ricos-que-n%C3%A3o-iniciam-com-o-sistema)
+    * [Ajuste de Desligamento Rápido](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#ajuste-de-desligamento-r%C3%A1pido)
     * [Instalar Thermald](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-thermald)
     * [Arrumar periféricos que não iniciam com o sistema](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#arrumar-perif%C3%A9ricos-que-n%C3%A3o-iniciam-com-o-sistema)
 
@@ -195,7 +195,7 @@ sudo sed -i 's/max_concurrent_connections = 10/# max_concurrent_connections = 0/
 ```
 
 
-## Ajuste de Desligamento Rápido (Timeout)
+## Ajuste de Desligamento Rápido
 
 
 *O que é:* Uma modificação no tempo de espera (timeout) do gerenciador de serviços systemd.
