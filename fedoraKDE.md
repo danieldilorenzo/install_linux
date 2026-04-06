@@ -256,17 +256,13 @@ Após isso, ele deve pedir para reiniciar o PC / Notebook. Depois disso, já est
 ### Instalação e Oh My Zsh
 
 ```bash
-sudo dnf install zsh util-linux-user 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo dnf install zsh util-linux-user git && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 ### Plugins do ZSH
 
 ```bash
-cd ~/.oh-my-zsh/custom/plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions
-git clone https://github.com/marlonrichert/zsh-autocomplete
-git clone https://github.com/zsh-users/zsh-syntax-highlighting
+cd ~/.oh-my-zsh/plugins && git clone https://github.com/zsh-users/zsh-autosuggestions && git clone https://github.com/marlonrichert/zsh-autocomplete && git clone https://github.com/zsh-users/zsh-syntax-highlighting
 ```
 <!-- 
 
@@ -296,9 +292,9 @@ plugins=(
 ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 
 # Sources manuais para garantir o funcionamento
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Colorindo o autocomplete
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
