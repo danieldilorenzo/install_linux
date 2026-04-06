@@ -46,7 +46,6 @@
     * [Instalar Gerenciador de Partiçōes](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-gerenciador-de-parti%C3%A7%C3%B5es)
     * [Instalar KDE Imagewriter](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-imagewriter)
     * [Instalar KDE Connect](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-kde-connect)
-    * [Instalar ferramentas para controle Xbox](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-ferramentas-para-controle-xbox)
 
 * 🎮 **Guia Técnico: GE-Proton no Linux**
 
@@ -555,11 +554,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ## Configurar ZSH
 
 ```bash
-cd .oh-my-zsh/plugins
-
-git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git  && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-
-cd ~ && sudo nano .zshrc
+cd .oh-my-zsh/plugins && git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git  && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git && cd ~ && sudo nano .zshrc
 ```
 
 ```bash
@@ -574,9 +569,9 @@ plugins=(
 ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd history completion)
 
 # Sources manuais para garantir o funcionamento
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.oh-my-zsh/custom/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.oh-my-zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Deixar as sugestões do autocomplete em ciano
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
@@ -739,35 +734,6 @@ sudo zypper in imagewriter
 ```bash
 sudo zypper in kdeconnect-kde
 ```
-
-<br>
-
-## Instalar ferramentas para controle Xbox
-
-- **O que é:** Configurar o sistema para garantir a total compatibilidade com o controle do Xbox Series S
-
-Instalando dependências
-
-```bash
-sudo zypper install make bluez-devel kernel-devel kernel-default-devel curl dkms
-```
-
-
-Instalando o xpadneo
-
-```bash
-curl -L https://github.com/atar-axis/xpadneo/archive/master.zip -o xpadneo.zip && unzip xpadneo.zip && cd xpadneo-master && sudo ./install.sh
-```
-
-Mesmo com o driver, o controle de Xbox Series às vezes briga com o ERTM (um protocolo de retransmissão do Bluetooth). Para garantir que ele não fique desconectando:
-
-Execute este comando para colocar o módulo para carregar, e desativar o ERTM permanentemente:
-
-```bash
-echo "hid_xpadneo" | sudo tee /etc/modules-load.d/xpadneo.conf && echo 'options bluetooth disable_ertm=1' | sudo tee /etc/modprobe.d/xbox_bt.conf
-```
-
-Após isso, ele deve pedir para reiniciar o PC / Notebook. Depois disso, já está pronto para usar.
 
 <br>
 
