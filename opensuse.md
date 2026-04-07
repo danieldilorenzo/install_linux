@@ -905,6 +905,9 @@ if [ -f /etc/fedora-release ]; then
     sudo dnf clean all
 elif [ -f /etc/os-release ] && grep -q "opensuse" /etc/os-release; then
     sudo zypper clean -a
+elif grep -q "ID=linuxmint" /etc/os-release 2>/dev/null; then
+    sudo apt-get autoremove -y
+    sudo apt-get autoclean
 fi
 
 # Limpa logs antigos (mantém apenas os últimos 2 dias)
@@ -916,5 +919,6 @@ rm -rf ~/.cache/thumbnails/*
     echo -e "${AZUL}--- Sistema Atualizado e Limpo! ---${RESET}"
     echo -e " "
     fastfetch
+
 
 ```
