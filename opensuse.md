@@ -37,6 +37,7 @@
     * [Instalar Wallpapers](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-wallpapers)
     * [Instalar Fontes](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-fontes)
     * [Instalar Papirus Icons & Folders](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-papirus-icons--folders)
+    * [Instalar Reversal Icons & Folders](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md#instalar-reversal-icons--folders)
 
 * 🛠️ **Ferramentas & Utilidades**
 
@@ -666,10 +667,20 @@ sudo zypper in jetbrains-mono-fonts google-droid-fonts libertinus-fonts texlive-
 
 ## Instalar Papirus Icons & Folders
 
-- **O que é:** Pacote de ícone e pastas.
+- **O que é:** Pacote de ícone e pastas Papirus.
   
 ```bash
 sudo zypper in papirus-icon-theme papirus-folders
+```
+
+<br>
+
+## Instalar Reversal Icons & Folders
+
+-**O que é:** Pacote de ícone e pastas Reversal
+
+```bash
+ git clone https://github.com/yeyushengfan258/Reversal-icon-theme.git  && cd Reversal-icon-theme  && ./install.sh -t all
 ```
 
 <br>
