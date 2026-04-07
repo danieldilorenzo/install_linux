@@ -204,7 +204,7 @@ sudo zypper in papirus-icon-theme papirus-folders
 
 ### Instalar Reversal Icons & Folders
 
--**O que é:** Pacote de ícone e pastas Reversal
+- **O que é:** Pacote de ícone e pastas Reversal
 
 ```bash
  git clone https://github.com/yeyushengfan258/Reversal-icon-theme.git  && cd Reversal-icon-theme  && ./install.sh -t all
