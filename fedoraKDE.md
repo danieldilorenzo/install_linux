@@ -9,37 +9,42 @@ Guia de configuração otimizado para o hardware Xeon E5 2650 V4 e GPU RX 6600.
 
 ## 📑 Índice de Instalação e Configuração
 
-* 🖥️ **1. Hardware e Boot**
+* 🖥️ **Hardware e Boot**
     * [Above 4G Decoding](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#above-4g-decoding)
     * [Resizable BAR (Ajuste Visual do GRUB)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#resizable-bar-ajuste-visual-do-grub)
     * [Drivers Broadcom (Wi-Fi)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#drivers-broadcom-wi-fi)
-* 🛠️ **2. Otimizações de Performance (DNF & Kernel)**
+      
+* 🛠️ **Otimizações de Performance (DNF & Kernel)**
     * [Acelerar o Gerenciador de Pacotes (DNF)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#acelerar-o-gerenciador-de-pacotes-dnf)
     * [Otimização do Kernel (Sysctl)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#otimiza%C3%A7%C3%A3o-do-kernel-sysctl)
 
-* 📦 **3. Repositórios e Codecs**
+* 📦 **Repositórios e Codecs**
     * [Habilitar RPM Fusion](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#habilitar-rpm-fusion)
     * [Plugins de Áudio e Vídeo](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#plugins-de-%C3%A1udio-e-v%C3%ADdeo)
-* 💻 **4. Apps e Desenvolvimento**
+
+* 🎨 **Interface & Customização**
+    * [Instalar Papirus Icons & Folders](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.mdinstalar-papirus-icons--folders)
+    * [Instalar Reversal Icons & Folders](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#instalar-reversal-icons--folders)
+      
+* 💻 **Apps e Desenvolvimento**
     * [Visual Studio Code](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#visual-studio-code)
     * [Node.js, Cypress e Python](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#nodejs-cypress-e-python)
     * [Instalação Cypress](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#instala%C3%A7%C3%A3o-cypress)
     * [Rodar Cypress](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#rodar-cypress)
     * [Fontes e Apps Essenciais](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#fontes-e-apps-essenciais)
-    * [Instalar ferramentas para controle Xbox](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#instalar-ferramentas-para-controle-xbox)
 
-* 🐚 **5. Customização do Terminal (ZSH)**
+* 🐚 **Customização do Terminal (ZSH)**
     * [Instalação e Oh My Zsh](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#instala%C3%A7%C3%A3o-e-oh-my-zsh)
     * [Plugins do ZSH](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#plugins-do-zsh)
  
-* 🧹 **6. Limpeza de Bloatwares**
+* 🧹 **Limpeza de Bloatwares**
     * [Removendo apps não usados](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#removendo-apps-n%C3%A3o-usados)
     * [Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md#script-para-atualiza%C3%A7%C3%A3o-e-limpeza-do-sistema-sistema-flatpak-e-firmware)
 
 
 <br>
 
-## 🖥️ 1. Hardware e Boot
+## 🖥️ Hardware e Boot
 
 
 ### Above 4G Decoding
@@ -107,7 +112,7 @@ sudo dnf install kernel-devel akmod-wl kmod-wl broadcom-wl
 
 <br>
 
-## 🛠️ 2. Otimizações de Performance (DNF & Kernel)
+## 🛠️ Otimizações de Performance (DNF & Kernel)
 
 ### Acelerar o Gerenciador de Pacotes (DNF)
 
@@ -170,7 +175,7 @@ vm.dirty_background_ratio=5
 <br>
 
 
-## 📦 3. Repositórios e Codecs
+## 📦 Repositórios e Codecs
 
 ### Habilitar RPM Fusion
 
@@ -185,7 +190,30 @@ sudo dnf install gstreamer1-plugins-{bad-*,good-*,base} gstreamer1-plugin-openh2
 
 <br>
 
-## 💻 4. Apps e Desenvolvimento
+## 🎨 Interface & Customização
+
+### Instalar Papirus Icons & Folders
+
+- **O que é:** Pacote de ícone e pastas Papirus.
+  
+```bash
+sudo zypper in papirus-icon-theme papirus-folders
+```
+
+<br>
+
+### Instalar Reversal Icons & Folders
+
+-**O que é:** Pacote de ícone e pastas Reversal
+
+```bash
+ git clone https://github.com/yeyushengfan258/Reversal-icon-theme.git  && cd Reversal-icon-theme  && ./install.sh -t all
+```
+
+<br>
+
+
+## 💻 Apps e Desenvolvimento
 
 ### Visual Studio Code
     sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc && sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo' && sudo dnf install code -y
@@ -214,44 +242,7 @@ npx cypress open
 
 <br>
 
-
-
-## Instalar ferramentas para controle Xbox
-
-- **O que é:** Configurar o sistema para garantir a total compatibilidade com o controle do Xbox Series S
-
-Instalando dependências
-
-```bash
-sudo dnf install dkms make kernel-devel kernel-headers bluez-libs-devel
-```
-
-
-Instalando o xpadneo
-
-```bash
-curl -L https://github.com/atar-axis/xpadneo/archive/master.zip -o xpadneo.zip && unzip xpadneo.zip && cd xpadneo-master && sudo ./install.sh
-```
-
-Mesmo com o driver, o controle de Xbox Series às vezes briga com o ERTM (um protocolo de retransmissão do Bluetooth). Para garantir que ele não fique desconectando:
-
- Execute este comando para colocar o módulo para carregar, e desativar o ERTM permanentemente:
-
-
-```bash
-
-echo "hid_xpadneo" | sudo tee /etc/modules-load.d/xpadneo.conf && echo 'options bluetooth disable_ertm=1' | sudo tee /etc/modprobe.d/xbox_bt.conf
-
-``` 
-
-Após isso, ele deve pedir para reiniciar o PC / Notebook. Depois disso, já está pronto para usar.
-
-<br>
-
-
-
-
-## 🐚 5. Customização do Terminal (ZSH)
+## 🐚 Customização do Terminal (ZSH)
 
 ### Instalação e Oh My Zsh
 
@@ -302,7 +293,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 ```
 <br>
 
-## 🧹 6. Limpeza de Bloatwares
+## 🧹 Limpeza de Bloatwares
 
 ### Removendo apps não usados
 
