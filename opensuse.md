@@ -888,6 +888,8 @@ if [ -f /etc/fedora-release ]; then
     sudo dnf upgrade --refresh
 elif [ -f /etc/os-release ] && grep -q "opensuse" /etc/os-release; then
     echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (Zypper)...${RESET}"
+    # Parando o packagekit
+    sudo systemctl stop --now packagekit
     sudo zypper ref
     # REMOVIDO o -y para que ele pare nos conflitos e peça sua escolha (1, 2, 3...)
     sudo zypper dup
