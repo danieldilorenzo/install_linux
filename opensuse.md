@@ -775,10 +775,7 @@ O **GE-Proton** é uma ferramenta essencial para quem joga no Linux, especialmen
 A forma mais simples de gerenciar versões no GNOME (openSUSE/Fedora) é via **Flatpak**:
 
 1.  **Instalação do Gerenciador:**
-#    ```bash
-#    flatpak install flathub net.davidotti.emupower.ProtonUp-Qt
-#    ```
-
+   
    ```bash
    flatpak install flathub net.davidotek.pupgui2
    ```
