@@ -15,10 +15,10 @@
   * [Limpar cache](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#limpar-cache)
   * [Limpa logs do sistema](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#lipa-logs-do-sistema)
 
-*🔋 **Otimização para Notebooks**
+* 🔋 **Otimização para Notebooks**
    * [Instalar Thermald](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-thermald)
    * [Instalar TLP](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-tlp)
-   * [Instalar Libsmbios]()
+   * [Instalar Libsmbios](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-Libsmbios)
 
 
 * 📦 **Gerenciamento de Pacotes**
