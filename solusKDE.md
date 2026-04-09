@@ -64,89 +64,178 @@ sudo eopkg it google-chrome-*.eopkg
 ```
 
 ffmpeg
-sudo eopkg it ffmpeg
 
-wget 
+```bash
+sudo eopkg it ffmpeg
+```
+
+wget
+
+```bash
 sudo eopkg it wget
+```
 
 curl 
+
+```bash
 sudo eopkg it curl
+```
 
 node
+
+```bash
 sudo eopkg it nodejs-22
+```
 
 git 
+
+```bash
 sudo eopkg it  git
+```
 
 zsh
+
+```bash
 sudo eopkg it zsh
+```
 
 zsh-autosuggestions
+
+```bash
 sudo eopkg it zsh-autosuggestions
+```
 
 zsh-syntax-highlighting
+
+```bash
 sudo eopkg it zsh-syntax-highlighting
+```
 
 breeze6-wallpapers plasma6-workspace-wallpapers
+
+```bash
 sudo eopkg it plasma-workspace-wallpapers
+```
 
 jetbrains-mono-fonts 
+
+```bash
 sudo eopkg it font-jetbrainsmono-ttf
+```
 
 google-droid-fonts 
+
+```bash
 sudo eopkg it font-droid-ttf
-
-libertinus-fonts 
-sudo eopkg it font-libertinus-otf
-
+```
 texlive-tex-gyre 
+
+```bash
 sudo eopkg it texlive-fonts-opentype texlive-fonts-truetype texlive-fonts-extra
+```
 
 ubuntu-fonts 
+
+```bash
 sudo eopkg it font-ubuntu-ttf font-ubuntu-sans-ttf
-
-bitstream-vera-fonts 
-sudo eopkg it font-bitstream-vera-ttf
-
-fira-code-fonts 
-sudo eopkg it fonts-firacode-ttf fonts-firacode-nerd
-
-google-nobile-fonts 
-sudo eopkg it font-nobile-ttf
+```
 
 inter-fonts 
+
+```bash
 sudo eopkg it font-inter-ttf
+```
 
 ibm-plex-fonts 
-sudo eopkg it font-ibm-plex-ttf font-ibm-plex-otf
 
+```bash
+sudo eopkg it font-ibm-plex-ttf font-ibm-plex-otf
+```
 
 papirus-icon-theme papirus-folders
+
+```bash
 sudo eopkg it papirus-icon-theme 
+```
 
 Reversal-icon-theme  
+
+```bash
 sudo eopkg it reversal-icon-theme
+```
 
 flatpak 
+
+```bash
 sudo eopkg it flatpak
+```
 
 partitionmanager
+
+```bash
 sudo eopkg it partitionmanager
+```
 
-imagewriter
-sudo eopkg it suse-imagewriter
+fira-code-fonts 
 
-kdeconnect-kde
-sudo eopkg it kdeconnect
+```bash
+sudo eopkg i font-firacode-ttf
+```
 
-elisa
-sudo eopkg it elisa
+Reversal-icon-theme  
 
-ktorrent
-sudo eopkg it ktorrent
+Balena Etcher
+
+```bash
+sudo eopkg it etcher
+```
 
 kweather
-sudo eopkg it kweather
+
+
+## Instalar fontes faltantes (Google / Bitstream / Libertinus)
+
+### 1. Garantir que a pasta existe
+
+```bash
+mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
+```
+
+### 2. Google Nobile (Regular, Bold, Italic, BoldItalic)
+
+```bash
+wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-Regular.ttf -P ~/.local/share/fonts/
+wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-Bold.ttf -P ~/.local/share/fonts/
+wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-Italic.ttf -P ~/.local/share/fonts/
+wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-BoldItalic.ttf -P ~/.local/share/fonts/
+```
+
+### 3. Bitstream Vera (O set completo: Sans, Serif e Mono)
+
+```bash
+wget https://github.com/liberationfonts/bitstream-vera/raw/master/Vera.ttf -P ~/.local/share/fonts/
+wget https://github.com/liberationfonts/bitstream-vera/raw/master/VeraBd.ttf -P ~/.local/share/fonts/
+wget https://github.com/liberationfonts/bitstream-vera/raw/master/VeraIt.ttf -P ~/.local/share/fonts/
+wget https://github.com/liberationfonts/bitstream-vera/raw/master/VeraMono.ttf -P ~/.local/share/fonts/
+```
+### 4. Libertinus (As principais para o sistema)
+
+```bash
+wget https://github.com/alerque/libertinus/raw/master/static/OTF/LibertinusSerif-Regular.otf -P ~/.local/share/fonts/
+wget https://github.com/alerque/libertinus/raw/master/static/OTF/LibertinusSans-Regular.otf -P ~/.local/share/fonts/
+wget https://github.com/alerque/libertinus/raw/master/static/OTF/LibertinusMono-Regular.otf -P ~/.local/share/fonts/
+```
+### 5. Atualizar o cache do sistema
+fc-cache -fv
+```
+
+
+
+
+
+
+
+
 
 # --- FONTES --- #
 https://help.getsol.us/docs/user/software/third-party/
