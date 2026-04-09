@@ -15,6 +15,11 @@
   * [Limpar cache]
   * [Limpa logs do sistema]
 
+*🔋 **Otimização para Notebooks **
+  * [Instalar Thermald]
+  * [Instalar TLP]
+  * [Instalar Libsmbios]
+
 * 📦 **Gerenciamento de Pacotes**
   * [Instalar Google Chrome]
   * [Instalar Wget]
@@ -102,6 +107,28 @@ sudo journalctl --vacuum-time=2d
 ```
 <br>
 
+
+## Instalar Thermald
+```bash
+sudo eopkg it thermald &&  sudo systemctl enable thermald --now
+```
+
+## Instalar TLP
+
+```bash
+sudo eopkg it tlp tlp-rdw
+```
+
+ Ativar serviços e desativar o conflito do KDE
+```bash
+sudo systemctl mask power-profiles-daemon && sudo systemctl enable tlp --now
+```
+## Instalar Libsmbios
+
+```bash
+sudo eopkg it libsmbios
+
+```
 ## Instalar Google Chrome
 
 ```bash
@@ -193,7 +220,7 @@ sudo eopkg it zsh
 #### Configurando
 
 ```bash
-cd .oh-my-zsh/custom/plugins && git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git  && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git && cd ~ && sudo nano .zshrc
+cd .oh-my-zsh/custom/plugins && git clone https://github.com/zsh-users/zsh-autosuggestions.git && git clone https://github.com/marlonrichert/zsh-autocomplete.git  && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git && cd ~ && nano .zshrc
 ```
 
 Cola na pasta
@@ -295,7 +322,7 @@ sudo eopkg it font-ibm-plex-ttf font-ibm-plex-otf
 ## Instalar Fira-code-fonts 
 
 ```bash
-sudo eopkg i font-firacode-ttf
+sudo eopkg it font-firacode-ttf
 ```
 
 ## Instalar todas as fontes de uma só vez
