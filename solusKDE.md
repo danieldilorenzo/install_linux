@@ -20,6 +20,7 @@
    * [Instalar TLP]
    * [Instalar Libsmbios]
 
+
 * 📦 **Gerenciamento de Pacotes**
   * [Instalar Google Chrome]
   * [Instalar Wget]
