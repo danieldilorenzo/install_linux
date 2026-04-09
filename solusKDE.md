@@ -22,37 +22,37 @@
 
 
 * 📦 **Gerenciamento de Pacotes**
-  * [Instalar Google Chrome]
-  * [Instalar Wget]
-  * [Instalar Curl]
-  * [Instalar NodeJS]
-  * [Instalar Git]
-  * [Instalar Flatpak]
-  * [Instalar Gnome Boxes]
-  * [Codecs e Plugins de Mídia]
-  * [Instalar Wallpapers]
+  * [Instalar Google Chrome](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-google-chrome)
+  * [Instalar Wget](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-wget)
+  * [Instalar Curl](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-curl)
+  * [Instalar NodeJS](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-nodejs)
+  * [Instalar Git](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-git)
+  * [Instalar Flatpak](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-flatpak)
+  * [Instalar Gnome Boxes](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-gnome-boxes)
+  * [Instalar Codecs e Plugins de Mídia](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-codecs-e-plugins-de-media)
+  * [Instalar Wallpapers](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-wallpapers)
  
 * 🎨 **ícones**
-  * [Instalar Papirus Icon Theme]
-  * [Instalar Reversal Icon Theme]
+  * [Instalar Papirus Icon Theme](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-papirus-icon-theme)
+  * [Instalar Reversal Icon Theme](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-reversal-icon-theme)
 
 * 💻 **Terminal & Shell**
-  * [Instalando e configurando ZSH]
+  * [Instalando e configurando ZSH](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalando-e-configurando-zsh)
  
 * 🎵 **Multimídia & Apps KDE**
-  * [Instalar Partitionmanager]
-  * [Instalar Balena Etcher]
-  * [Instalar VLC]
+  * [Instalar Partitionmanager](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-partitionmanager)
+  * [Instalar Balena Etcher](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-balena-etcher)
+  * [Instalar VLC](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-vlc)
  
     
 * ✒️ **Fontes**
-  * [Instalar Jetbrains-mono-fonts]
-  * [Instalar Google-droid-fonts]
-  * [Instalar Texlive-tex-gyre] 
-  * [Instalar Ubuntu-fonts] 
-  * [Instalar Inter-fonts] 
-  * [Instalar Ibm-plex-fonts] 
-  * [Instalar Fira-code-fonts]
+  * [Instalar Jetbrains-mono-fonts](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-jetbrains-mono-fonts)
+  * [Instalar Google-droid-fonts](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-google-droid-fonts)
+  * [Instalar Texlive-tex-gyre] (https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-texlive-tex-gyre)
+  * [Instalar Ubuntu-fonts] (https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-ubuntu-fonts)
+  * [Instalar Inter-fonts] (https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-inter-fonts)
+  * [Instalar Ibm-plex-fonts] (https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-ibm-plex-fonts)
+  * [Instalar Fira-code-fonts](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-fira-code-fonts)
 
 <br>
 
@@ -70,35 +70,43 @@ sudo passwd root
 ```bash
 usermod -aG wheel,sudo daniel 
 ```
+<br>
 
 ## Instalar pacote
 
 ```bash
 sudo eopkg it nome-do-pacote
 ```
+<br>
 
 ## Remover pacote
 
 ```bash
 sudo eopkg rm nome-do-pacote
 ```
+<br>
+
 ## Buscar pacote
 
 ```bash
 eopkg sr termo
 ```
+<br>
 
 ## Atualizar sistema
 
 ```bash
 sudo eopkg up
 ```
+<br>
 
 ## Limpar cache
 
 ```bash
 sudo eopkg delete-cache dc
 ```
+<br>
+
 ## Limpa logs do sistema 
 
 Limpa logs com mais de dois dias
@@ -113,6 +121,7 @@ sudo journalctl --vacuum-time=2d
 ```bash
 sudo eopkg it thermald &&  sudo systemctl enable thermald --now
 ```
+<br>
 
 ## Instalar TLP
 
@@ -124,12 +133,16 @@ sudo eopkg it tlp tlp-rdw
 ```bash
 sudo systemctl mask power-profiles-daemon && sudo systemctl enable tlp --now
 ```
+<br>
+
 ## Instalar Libsmbios
 
 ```bash
 sudo eopkg it libsmbios
 
 ```
+<br>
+
 ## Instalar Google Chrome
 
 ```bash
@@ -184,7 +197,7 @@ sudo flatpak install flathub org.gnome.Boxes
 ```
 <br>
 
-## Codecs e Plugins de Mídia 
+## Instalar Codecs e Plugins de Mídia 
 
 ```bash
 sudo eopkg it gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-bad-extras ffmpeg
