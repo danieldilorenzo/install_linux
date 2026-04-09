@@ -226,15 +226,10 @@ wget https://github.com/alerque/libertinus/raw/master/static/OTF/LibertinusSans-
 wget https://github.com/alerque/libertinus/raw/master/static/OTF/LibertinusMono-Regular.otf -P ~/.local/share/fonts/
 ```
 ### 5. Atualizar o cache do sistema
+
+```bash
 fc-cache -fv
 ```
-
-
-
-
-
-
-
 
 
 # --- FONTES --- #
