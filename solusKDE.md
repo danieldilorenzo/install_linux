@@ -193,7 +193,7 @@ sudo eopkg it etcher
 kweather
 
 
-## Instalar fontes faltantes (Google / Bitstream / Libertinus)
+## Instalar fontes faltantes (Google )
 
 ### 1. Garantir que a pasta existe
 
@@ -204,12 +204,16 @@ mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
 ### 2. Google Nobile (Regular, Bold, Italic, BoldItalic)
 
 ```bash
-wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-Regular.ttf -P ~/.local/share/fonts/
-wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-Bold.ttf -P ~/.local/share/fonts/
-wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-Italic.ttf -P ~/.local/share/fonts/
-wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-BoldItalic.ttf -P ~/.local/share/fonts/
+mkdir -p ~/.local/share/fonts && cd ~/.local/share/fonts
 ```
 
+```bash
+wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-Regular.ttf -
+wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-Bold.ttf 
+wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-Italic.ttf
+wget https://github.com/google/fonts/raw/main/ofl/nobile/Nobile-BoldItalic.ttf 
+```
+<!--
 ### 3. Bitstream Vera (O set completo: Sans, Serif e Mono)
 
 ```bash
@@ -225,6 +229,7 @@ wget https://github.com/alerque/libertinus/raw/master/static/OTF/LibertinusSerif
 wget https://github.com/alerque/libertinus/raw/master/static/OTF/LibertinusSans-Regular.otf -P ~/.local/share/fonts/
 wget https://github.com/alerque/libertinus/raw/master/static/OTF/LibertinusMono-Regular.otf -P ~/.local/share/fonts/
 ```
+-->
 ### 5. Atualizar o cache do sistema
 
 ```bash
