@@ -48,10 +48,10 @@
 * ✒️ **Fontes**
   * [Instalar Jetbrains-mono-fonts](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-jetbrains-mono-fonts)
   * [Instalar Google-droid-fonts](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-google-droid-fonts)
-  * [Instalar Texlive-tex-gyre] (https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-texlive-tex-gyre)
-  * [Instalar Ubuntu-fonts] (https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-ubuntu-fonts)
-  * [Instalar Inter-fonts] (https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-inter-fonts)
-  * [Instalar Ibm-plex-fonts] (https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-ibm-plex-fonts)
+  * [Instalar Texlive-tex-gyre](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-texlive-tex-gyre)
+  * [Instalar Ubuntu-fonts](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-ubuntu-fonts)
+  * [Instalar Inter-fonts](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-inter-fonts)
+  * [Instalar Ibm-plex-fonts](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-ibm-plex-fonts)
   * [Instalar Fira-code-fonts](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-fira-code-fonts)
 
 <br>
