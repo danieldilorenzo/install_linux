@@ -7,18 +7,18 @@
 
 
 * 🏗️ **Primeiros passos**
-  * [Arrumar root]
-  * [Instalar pacote]
-  * [Remover pacote]
-  * [Buscar pacote]
-  * [Atualizar sistema]
-  * [Limpar cache]
-  * [Limpa logs do sistema]
+  * [Arrumar root](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#arrumar-root)
+  * [Instalar pacote](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-pacote)
+  * [Remover pacote](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#remover-pacote)
+  * [Buscar pacote](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#buscar-pacote)
+  * [Atualizar sistema](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#atualizar-sistema)
+  * [Limpar cache](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#limpar-cache)
+  * [Limpa logs do sistema](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#lipa-logs-do-sistema)
 
 *🔋 **Otimização para Notebooks**
-   * [Instalar Thermald]
-   * [Instalar TLP]
-   * [Instalar Libsmbios]
+   * [Instalar Thermald](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-thermald)
+   * [Instalar TLP](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-tlp)
+   * [Instalar Libsmbios]()
 
 
 * 📦 **Gerenciamento de Pacotes**
