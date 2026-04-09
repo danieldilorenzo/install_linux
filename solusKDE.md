@@ -15,10 +15,10 @@
   * [Limpar cache]
   * [Limpa logs do sistema]
 
-*🔋 **Otimização para Notebooks **
-  * [Instalar Thermald]
-  * [Instalar TLP]
-  * [Instalar Libsmbios]
+ *🔋 **Otimização para Notebooks **
+   * [Instalar Thermald]
+   * [Instalar TLP]
+   * [Instalar Libsmbios]
 
 * 📦 **Gerenciamento de Pacotes**
   * [Instalar Google Chrome]
