@@ -1,4 +1,4 @@
-# Pós Instalação OpenSUSE Tumbleweed KDE
+# Pós Instalação Solus KDE
 
 
 <br>
