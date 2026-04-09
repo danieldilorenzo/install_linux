@@ -229,7 +229,7 @@ sudo eopkg it papirus-icon-theme
 ## Instalando e configurando ZSH
 
 ```bash
-sudo eopkg it zsh
+sudo eopkg it zsh && sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 #### Configurando
 
