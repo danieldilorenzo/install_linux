@@ -40,10 +40,17 @@
  
     
 * ✒️ **Fontes**
-* ⚡ **Instalação Expressa**
+  * [Instalar Jetbrains-mono-fonts]
+  * [Instalar Google-droid-fonts]
+  * [Instalar Texlive-tex-gyre] 
+  * [Instalar Ubuntu-fonts] 
+  * [Instalar Inter-fonts] 
+  * [Instalar Ibm-plex-fonts] 
+  * [Instalar Fira-code-fonts]
 
+<br>
 
-### Arrumar root
+## Arrumar root
 ```bash
 sudo su #entrar em root
 ```
@@ -57,101 +64,114 @@ sudo passwd root
 ```bash
 usermod -aG wheel,sudo daniel 
 ```
-___
 
-### Instalar pacote
+## Instalar pacote
 
 ```bash
 sudo eopkg it nome-do-pacote
 ```
 
-
-### Remover pacote
+## Remover pacote
 
 ```bash
 sudo eopkg rm nome-do-pacote
 ```
-### Buscar pacote
+## Buscar pacote
 
 ```bash
 eopkg sr termo
 ```
 
-### Atualizar sistema
+## Atualizar sistema
 
 ```bash
 sudo eopkg up
 ```
 
-### Limpar cache
+## Limpar cache
 
 ```bash
 sudo eopkg delete-cache dc
 ```
-### Limpa logs do sistema 
+## Limpa logs do sistema 
 
 Limpa logs com mais de dois dias
 
 ```bash
 sudo journalctl --vacuum-time=2d
 ```
+<br>
 
-### Instalar Google Chrome
+## Instalar Google Chrome
 
 ```bash
 sudo eopkg it python-eopkg
 sudo eopkg.py3 bi --ignore-safety https://raw.githubusercontent.com/getsolus/3rd-party/master/network/web/browser/google-chrome-stable/pspec.xml
 sudo eopkg it google-chrome-*.eopkg
 ```
+<br>
 
-### Instalar Wget
+## Instalar Wget
 
 ```bash
 sudo eopkg it wget
 ```
+<br>
 
 ### Instalar Curl 
 
 ```bash
 sudo eopkg it curl
 ```
+<br>
 
-### Instalar NodeJS
+## Instalar NodeJS
 
 ```bash
 sudo eopkg it nodejs-22
 ```
+<br>
 
-### Instalar Git 
+## Instalar Git 
 
 ```bash
 sudo eopkg it  git
 ```
 
-### Instalar Flatpak 
+<br>
+
+## Instalar Flatpak 
 
 ```bash
 sudo eopkg it flatpak
 ```
 
-### Instalar Gnome Boxes
+<br>
+
+## Instalar Gnome Boxes
 
 ```bash
 sudo flatpak install flathub org.gnome.Boxes
 
 ```
-### Codecs e Plugins de Mídia 
+<br>
+
+## Codecs e Plugins de Mídia 
 
 ```bash
 sudo eopkg it gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer-plugins-bad-extras ffmpeg
 ```
 
-### Instalar wallpapers
+<br>
+
+## Instalar wallpapers
 ```bash
 sudo eopkg it plasma-workspace-wallpapers
 ```
 
-### Instalar Papirus Icon Theme
+<br>
+
+## Instalar Papirus Icon Theme
 
 ```bash
 sudo eopkg it papirus-icon-theme 
@@ -163,7 +183,9 @@ sudo eopkg it papirus-icon-theme
  git clone https://github.com/yeyushengfan258/Reversal-icon-theme.git  && cd Reversal-icon-theme  && ./install.sh -t all
 ```
 
-### Instalando e configurando ZSH
+<br>
+
+## Instalando e configurando ZSH
 
 ```bash
 sudo eopkg it zsh
@@ -199,99 +221,88 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=6"
 
 
 
-### Instalar Partitionmanager
+<br>
+
+## Instalar Partitionmanager
 
 ```bash
 sudo eopkg it partitionmanager
 ```
 
 
-### Instalar Balena Etcher
+<br>
+
+## Instalar Balena Etcher
 
 ```bash
 sudo eopkg it etcher
 ```
 
-### Instalar VLC
+<br>
+
+## Instalar VLC
 
 ```bash
 sudo eopkg it vlc
 ```
 
-### Instalar Kweather
+<br>
+
+## Instalar Kweather
+
 ```bash
 flatpak install flathub org.kde.kweather
 ```
 
+<br>
 
-
-### Fontes
-
-#### Instalar Jetbrains-mono-fonts 
+## Instalar Jetbrains-mono-fonts 
 
 ```bash
 sudo eopkg it font-jetbrainsmono-ttf
 ```
 
-#### Instalar Google-droid-fonts 
+## Instalar Google-droid-fonts 
 
 ```bash
 sudo eopkg it font-droid-ttf
 ```
-#### Instalar Texlive-tex-gyre 
+
+## Instalar Texlive-tex-gyre 
 
 ```bash
 sudo eopkg it texlive-fonts-opentype texlive-fonts-truetype texlive-fonts-extra
 ```
 
-#### Instalar Ubuntu-fonts 
+## Instalar Ubuntu-fonts 
 
 ```bash
 sudo eopkg it font-ubuntu-ttf font-ubuntu-sans-ttf
 ```
 
-#### Instalar Inter-fonts 
+## Instalar Inter-fonts 
 
 ```bash
 sudo eopkg it font-inter-ttf
 ```
 
-#### Instalar Ibm-plex-fonts 
+## Instalar Ibm-plex-fonts 
 
 ```bash
 sudo eopkg it font-ibm-plex-ttf font-ibm-plex-otf
 ```
 
-#### Instalar Fira-code-fonts 
+## Instalar Fira-code-fonts 
 
 ```bash
 sudo eopkg i font-firacode-ttf
 ```
 
+## Instalar todas as fontes de uma só vez
+```bash
+sudo eopkg it font-jetbrainsmono-ttf font-droid-ttf texlive-fonts-opentype texlive-fonts-truetype texlive-fonts-extra font-ubuntu-ttf font-ubuntu-sans-ttf font-inter-ttf font-ibm-plex-ttf font-ibm-plex-otf font-firacode-ttf
+```
+
 >[!TIP] 
 > Google Fonts deve ser instalada através do site
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-kweather
-
-
-# --- FONTES --- #
-https://help.getsol.us/docs/user/software/third-party/
