@@ -21,7 +21,7 @@
 //  
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-    "logo":"opensuse-tumbleweed_old",     // logo openSUSE
+    "logo":"opensuse-tumbleweed_old",
     "logo": {
         "type": "small",
         "padding": {
@@ -32,13 +32,13 @@
     "display": {
         "separator": " ",
         "constants": [
-            "═══════════════════════════════════════════════════════════════════════════",
-            "║\u001b[75C║\u001b[75D"
+            "══════════════════════════════════════════════════════════════════════════════",
+            "║\u001b[78C║\u001b[78D"
         ]
     },
     "modules": [
         {
-            "format": "{#1}{#keys}╔{$1}╗\u001b[76D {user-name-colored}{at-symbol-colored}{host-name-colored} 💻 ",
+            "format": "{#1}{#keys}╔{$1}╗\u001b[79D {user-name-colored}{at-symbol-colored}{host-name-colored} 💻 ",
             "type": "title"
         },
         {
