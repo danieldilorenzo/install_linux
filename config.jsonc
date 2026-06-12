@@ -18,23 +18,19 @@
 // Início com o logo openSUSE
 //
 //
-//
+//  
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo":"opensuse-tumbleweed_old",     // logo openSUSE
-    //"logo":"fedora_small",                // logo Fedora
     "logo": {
         "type": "small",
         "padding": {
             "top": 1,
-            "right": 2},
-
+            "right": 2
+        }
     },
     "display": {
-        "separator": ">  ",
-        "color": {
-            "separator": "red"
-        },
+        "separator": " ",
         "constants": [
             "═══════════════════════════════════════════════════════════════════════════",
             "║\u001b[75C║\u001b[75D"
@@ -45,55 +41,54 @@
             "format": "{#1}{#keys}╔{$1}╗\u001b[76D {user-name-colored}{at-symbol-colored}{host-name-colored} 💻 ",
             "type": "title"
         },
-         {
-            "key": "{$2}{#33}• distro   ",
+        {
+            "key": "{$2}{#33}• distro    {#33}•",
             "type": "os"
         },
         {
-            "key": "{$2}{#31}• kernel   ",
+            "key": "{$2}{#31}• kernel    {#31}•",
             "type": "kernel"
         },
         {
-            "key": "{$2}{#34}• desktop  ",
+            "key": "{$2}{#34}• desktop   {#34}•",
             "type": "de"
         },
         {
-            "key": "{$2}{#35}• term     ",
+            "key": "{$2}{#35}• term      {#35}•",
             "type": "terminal"
         },
         {
-            "key": "{$2}{#36}• shell    ",
+            "key": "{$2}{#36}• shell     {#36}•",
             "type": "shell"
         },
         {
-            "key": "{$2}{#35}• cpu      ",
+            "key": "{$2}{#35}• cpu       {#35}•",
             "type": "cpu",
-            "showPeCoreCount": true,
             "temp": true
         },
         {
-            "key": "{$2}{#34}• gpu      ",
+            "key": "{$2}{#34}• gpu       {#34}•",
             "type": "gpu"
         },
         {
-            "key": "{$2}{#33}• disk     ",
+            "key": "{$2}{#33}• disk      {#33}•",
             "type": "disk",
             "folders": "/"
         },
         {
-            "key": "{$2}{#32}• memory   ",
+            "key": "{$2}{#32}• memory    {#32}•",
             "type": "memory"
         },
         {
-            "key": "{$2}{#30}• battery  ",
-            "type": "battery",
+            "key": "{$2}{#30}• battery   {#30}•",
+            "type": "battery"
         },
         {
             "format": "{#1}{#keys}╠{$1}╣",
             "type": "custom"
         },
         {
-            "key": "{$2}{#39}• colors   ",
+            "key": "{$2}{#34}• colors      ",
             "type": "colors",
             "symbol": "circle"
         },
