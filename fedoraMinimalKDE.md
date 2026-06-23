@@ -3,37 +3,38 @@
 <br>
 
 ## 📑 Índice de Instalação e Configuração
-
 - 🖥️ **Instalação**
-  - [Baixar a ISO]
-  - [Instalando]
-    - [Instalando KDE]
-    - [Habilitando serviços]
+  - [Baixar a ISO](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#baixar-a-iso)
+  - Instalando
+    - [Instalando KDE](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#instalando-kde)
+    - [Habilitando serviços](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#habilitando-servi%C3%A7os)
 
 - 🌐 **Navegadores**
-  - [Instalar Firefox]
-  - [Instalar Google Chrome]
+  - [Instalar Firefox](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#instalar-firefox)
+  - [Instalar Google Chrome](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#instalar-google-chrome)
 
 - 📦 **Repositórios e Codecs**
-  - [Habilitar RPM Fusion]
-  - [Plugins de Áudio e Vídeo]
+  - [Habilitar RPM Fusion](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#habilitar-rpm-fusion)
+  - [Plugins de Áudio e Vídeo](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#plugins-de-%C3%A1udio-e-v%C3%ADdeo)
 
 - 🎨 **Interface & Customização**
-  - [Instalar Papirus Icons]
+  - [Instalar Papirus Icons](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#instalar-papirus-icons--folders)
 
 - 💻 **Apps e Desenvolvimento**
-  - [Flatpak]
-  - [Gnome Boxes]
-  - [Visual Studio Code]
-  - [Node.js e Python]
-  - [Fontes e Apps Essenciais]
+  - [Flatpak](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#instalar-flatpak)
+  - [Gnome Boxes](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#gnome-boxes)
+  - [Visual Studio Code](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#visual-studio-code)
+  - [Node.js e Python](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#nodejs-e-python)
+  - [Fontes e Apps Essenciais](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#fontes-e-apps-essenciais)
 
 - 🐚 **Customização do Terminal (ZSH)**
-  - [Instalação e Oh My Zsh]
-  - [Plugins do ZSH]
+  - [Instalação e Oh My Zsh](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#instala%C3%A7%C3%A3o-e-oh-my-zsh)
+  - [Plugins do ZSH](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#plugins-do-zsh)
 
 - 🧹 **Limpeza de Bloatwares**
-  - [Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)]
+  - [Script para atualização e limpeza do sistema (Sistema, Flatpak e Firmware)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md#script-para-atualiza%C3%A7%C3%A3o-e-limpeza-do-sistema-sistema-flatpak-e-firmware)
+
+  <br>
 
 - 🖥️ **Instalação**
 
