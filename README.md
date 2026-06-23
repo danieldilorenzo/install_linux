@@ -8,6 +8,8 @@ Olá! Este aqui é meu pequeno repositório com tutoriais criados por mim para m
 
 [![openSUSE](https://img.shields.io/badge/openSUSE%20Tumbleweed%20KDE-%2364B345?style=for-the-badge&logo=openSUSE&logoColor=white&link=hhttps://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md)](https://github.com/danieldilorenzo/install_linux/blob/main/opensuse.md)
 
+
+[![Fedora](https://img.shields.io/badge/Fedora%20KDE%20Minimal-294172?style=for-the-badge&logo=fedora&logoColor=white&link=https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraMinimalKDE.md)
 [![Fedora](https://img.shields.io/badge/Fedora%20KDE-294172?style=for-the-badge&logo=fedora&logoColor=white&link=https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md)](https://github.com/danieldilorenzo/install_linux/blob/main/fedoraKDE.md)
 
 <!--[![Arch](https://img.shields.io/badge/Arch%20Linux%20KDE-1793D1?logo=arch-linux&logoColor=fff&style=for-the-badge&link=https://github.com/danieldilorenzo/install_linux/blob/main/Arch%20Linux%20KDE.md)](https://github.com/danieldilorenzo/install_linux/blob/main/Arch%20Linux%20KDE.md)
