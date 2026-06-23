@@ -51,8 +51,14 @@ Depois de instalado, vamos cair no terminal, onde devemos instalar o desejado
 #### Instalando KDE
 
 ```bash
-sudo dnf install plasma-desktop plasma-workspace-wayland plasma-login-manager kscreen plasma-nm konsole dolphin pipewire-pulseaudio plasma-pa brightnessctl bluez bluedevil spectacle plasma-systemmonitor NetworkManager-wifi joystick kernel-modules-extra ark wireplumber kate emoji-picker
+sudo dnf install plasma-desktop plasma-workspace-wayland plasma-login-manager kscreen plasma-nm konsole dolphin pipewire-pulseaudio plasma-pa brightnessctl bluez bluedevil spectacle plasma-systemmonitor NetworkManager-wifi joystick kernel-modules-extra ark wireplumber kate hwinfo kinfocenter udisks2 plasma-disks  mesa-va-drivers kde-gtk-config flatpak
 ```
+
+Os apps acima são o mínimo para um sistema funcionar sem problemas. Se houver a possibilidade de instalar alguns outros apps, podemos executar o comando abaixo
+
+```bash
+sudo dnf install plasma-workspace-wallpapers kde-connect emoji-picker plasma-browser-integration fastfetch plasma-discover plasma-discover-flatpak
+``` 
 
 #### Habilitando serviços
 
