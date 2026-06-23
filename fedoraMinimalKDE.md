@@ -51,7 +51,7 @@ Depois de instalado, vamos cair no terminal, onde devemos instalar o desejado
 #### Instalando KDE
 
 ```bash
-sudo dnf install plasma-desktop plasma-workspace-wayland plasma-login-manager kscreen plasma-nm konsole dolphin pipewire-pulseaudio plasma-pa brightnessctl bluez bluedevil spectacle plasma-systemmonitor NetworkManager-wifi joystick kernel-modules-extra ark wireplumber
+sudo dnf install plasma-desktop plasma-workspace-wayland plasma-login-manager kscreen plasma-nm konsole dolphin pipewire-pulseaudio plasma-pa brightnessctl bluez bluedevil spectacle plasma-systemmonitor NetworkManager-wifi joystick kernel-modules-extra ark wireplumber kate
 ```
 
 #### Habilitando serviços
