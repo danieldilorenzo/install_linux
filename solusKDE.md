@@ -41,7 +41,7 @@
  
 * 🎵 **Multimídia & Apps KDE**
   * [Instalar Partitionmanager](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-partitionmanager)
-  * [Instalar Balena Etcher](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-balena-etcher)
+  * [Instalar Imagewriter](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-imagewriter)
   * [Instalar VLC](https://github.com/danieldilorenzo/install_linux/blob/main/solusKDE.md#instalar-vlc)
  
     
@@ -273,11 +273,10 @@ sudo eopkg it partitionmanager
 
 <br>
 
-## Instalar Balena Etcher
+## Instalar Imagewriter
 
 ```bash
-sudo eopkg it etcher
-```
+sudo eopkg it isoimagewriter```
 
 <br>
 
