@@ -1,0 +1,42 @@
+{ config, pkgs, ... }:
+
+{
+  # 1. Habilita o ambiente GNOME
+  services.xserver.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
+  # 2. Pacotes do sistema (Tema Breeze + utilitários)
+  environment.systemPackages = with pkgs; [
+    kdePackages.breeze
+    kdePackages.breeze-gtk
+    dconf
+  ];
+
+  # 3. Força as variáveis globais de cursor para Wayland, XWayland e Flatpak
+  environment.variables = {
+    XCURSOR_THEME = "Breeze_Snow"; # Se preferir o modelo preto, use "breeze_cursors"
+    XCURSOR_SIZE = "24";
+  };
+
+  # 4. Configuração global do dconf para a sessão do GNOME
+  programs.dconf.enable = true;
+  services.xserver.desktopManager.gnome.extraGSettingsOverrides = ''
+    [org/gnome/desktop/interface]
+    cursor-theme='Breeze_Snow'
+    cursor-size=24
+  '';
+
+  # 5. Suporte de aceleração gráfica e 32-bits (essencial para a Steam)
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  # 6. Habilita a Steam no sistema
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+}
