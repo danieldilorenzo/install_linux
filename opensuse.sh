@@ -130,16 +130,20 @@ echo -e " "
 echo -e "${AZUL}--- APLICATIVOS INSTALADOS COM SUCESSO. ---${RESET}"
 echo -e " "
 
-# Pergunta sobre o reboot
-read -p "Deseja reiniciar o sistema agora? (s/n): " RESPOSTA
+# Pergunta sobre desligar ou reiniciar
+echo -e " "
+echo -e -n "${VERDE}Tudo pronto! Deseja desligar ou reiniciar o sistema agora? (d/r/n): ${RESET}"
+read RESPOSTA
 
 # Converte a resposta para minúsculas
 RESPOSTA=$(echo "$RESPOSTA" | tr '[:upper:]' '[:lower:]')
 
-# Verifica a resposta
-if [[ "$RESPOSTA" =~ ^(s|sim|y|yes)$ ]]; then
-    echo -e "\n${VERDE}Reiniciando o sistema :)${RESET}\n"
+if [[ "$RESPOSTA" =~ ^(d|desligar|shutdown)$ ]]; then
+    echo -e "\n${VERDE}A desligar o sistema... Atempadamente! :)${RESET}\n"
+    sudo shutdown now
+elif [[ "$RESPOSTA" =~ ^(r|reiniciar|reboot)$ ]]; then
+    echo -e "\n${VERDE}A reiniciar o sistema... :)${RESET}\n"
     sudo reboot
 else
-    echo -e "\n${VERDE}Tudo pronto! Lembre-se de reiniciar mais tarde para aplicar todas as alterações :)${RESET}\n"
+    echo -e "\n${VERDE}Lembre-se de reiniciar ou desligar mais tarde para aplicar todas as alterações :)${RESET}\n"
 fi
