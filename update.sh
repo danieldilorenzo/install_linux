@@ -111,16 +111,20 @@ if command -v fastfetch &> /dev/null; then
     fastfetch
 fi
 
-# Pergunta sobre o reboot
+# Pergunta sobre desligar ou reiniciar
 echo -e " "
-echo -e -n "${VERDE}Tudo pronto! Deseja reiniciar o sistema agora? (s/n): ${RESET}"
+echo -e -n "${VERDE}Tudo pronto! Deseja desligar ou reiniciar o sistema agora? (d/r/n): ${RESET}"
 read RESPOSTA
 
+# Converte a resposta para minúsculas
 RESPOSTA=$(echo "$RESPOSTA" | tr '[:upper:]' '[:lower:]')
 
-if [[ "$RESPOSTA" =~ ^(s|sim|y|yes)$ ]]; then
-    echo -e "\n${VERDE}Reiniciando o sistema :)${RESET}\n"
+if [[ "$RESPOSTA" =~ ^(d|desligar|shutdown)$ ]]; then
+    echo -e "\n${VERDE}A desligar o sistema... Atempadamente! :)${RESET}\n"
+    sudo shutdown now
+elif [[ "$RESPOSTA" =~ ^(r|reiniciar|reboot)$ ]]; then
+    echo -e "\n${VERDE}A reiniciar o sistema... :)${RESET}\n"
     sudo reboot
 else
-    echo -e "\n${VERDE}Lembre-se de reiniciar mais tarde para aplicar todas as alterações :)${RESET}\n"
+    echo -e "\n${VERDE}Lembre-se de reiniciar ou desligar mais tarde para aplicar todas as alterações :)${RESET}\n"
 fi
