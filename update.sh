@@ -44,7 +44,7 @@ case "$ID" in
     opensuse-tumbleweed|opensuse-leap|opensuse)
         sudo systemctl stop --now packagekit 2>/dev/null || true
         sudo zypper ref
-        sudo zypper dup -y
+        sudo zypper dup
         ;;
     openmandriva)
         sudo dnf clean all
