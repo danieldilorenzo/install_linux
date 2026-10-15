@@ -14,11 +14,7 @@ RESET='\033[0m'
 echo -e " "
 echo -e "${AZUL}------ ${VERDE_SUSE}OPENSUSE TUMBLEWEED ${AZUL}------${RESET}"
 echo -e " "
-#echo -e "${AZUL}-------- ${ITALICO_VERMELHO}Daniel Di Lorenzo ${AZUL}----------${RESET}"
-#echo -e " "
-#echo -e "${AZUL}--------- ${VERDE}Iniciando Script ${AZUL}----------${RESET}"
-#echo -e " "
-#echo -e " "
+
 echo -e "${VERDE}Bloqueando pacotes recomendados${RESET}"
 echo -e " "
 sudo tee /etc/zypp/zypp.conf.d/custom_requires.conf > /dev/null << 'EOF'
@@ -120,12 +116,12 @@ elif [[ "$DESKTOP" == *"kde"* || "$DESKTOP" == *"plasma"* ]]; then
     sudo zypper in -y \
      	breeze6-wallpapers \
      	plasma6-workspace-wallpapers \
-	partitionmanager \
-	imagewriter \
-	kdeconnect-kde \
-	elisa \
-	ktorrent \
-	kweather 	
+		partitionmanager \
+		imagewriter \
+		kdeconnect-kde \
+		elisa \
+		ktorrent \
+		kweather 	
 else
     echo -e "\n${AZUL}Ambiente não especificado ou outro desktop detectado ($DESKTOP). Pulando pacotes específicos.${RESET}"
 fi
