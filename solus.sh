@@ -67,4 +67,15 @@ fi
 echo -e "\n${VERDE}Removendo LibreOffice${RESET}"
 sudo eopkg rm -y libreoffice-calc libreoffice-common libreoffice-draw libreoffice-impress libreoffice-math libreoffice-writer
 
-echo -e "\n${AZUL}Tudo instalado, aproveite! :)${RESET}\n"
+# Pergunta sobre o reboot
+echo -e " "
+echo -e -n "${VERDE}Tudo pronto! Deseja reiniciar o sistema agora? (s/n): ${RESET}"
+read RESPOSTA
+
+RESPOSTA=$(echo "$RESPOSTA" | tr '[:upper:]' '[:lower:]')
+
+if [[ "$RESPOSTA" =~ ^(s|sim|y|yes)$ ]]; then
+    sudo reboot
+else
+    echo -e "\n${VERDE}Lembre-se de reiniciar mais tarde para aplicar todas as alterações :)${RESET}\n"
+fi
