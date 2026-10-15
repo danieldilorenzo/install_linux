@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Cores para facilitar a leitura
