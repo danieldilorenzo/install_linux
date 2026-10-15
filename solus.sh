@@ -76,10 +76,8 @@ read RESPOSTA
 RESPOSTA=$(echo "$RESPOSTA" | tr '[:upper:]' '[:lower:]')
 
 if [[ "$RESPOSTA" =~ ^(d|desligar|shutdown)$ ]]; then
-    echo -e "\n${VERDE}A desligar o sistema... Atempadamente! :)${RESET}\n"
     sudo shutdown now
 elif [[ "$RESPOSTA" =~ ^(r|reiniciar|reboot)$ ]]; then
-    echo -e "\n${VERDE}A reiniciar o sistema... :)${RESET}\n"
     sudo reboot
 else
     echo -e "\n${VERDE}Lembre-se de reiniciar ou desligar mais tarde para aplicar todas as alterações :)${RESET}\n"
