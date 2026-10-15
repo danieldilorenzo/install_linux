@@ -2,52 +2,69 @@
 #
 # Rodar no terminal
 # cat /etc/os-release
+
+
+
+#!/bin/bash
 #
+# Script de Atualização Universal
+#
+
+# Sair imediatamente se algum comando falhar
+set -e
+
 # Cores para facilitar a leitura
 VERDE='\033[0;32m'
 AZUL='\033[0;34m'
+VERMELHO='\033[0;31m'
 RESET='\033[0m'
 
+echo -e " "
+echo -e "${AZUL}--- Iniciando Atualização Completa ---${RESET}"
+echo -e " "
 
-    echo -e " "
-    echo -e "${AZUL}--- Iniciando Atualização Completa ---${RESET}"
-    echo -e " "
-
-# 1. Detectar o Gerenciador de Pacotes
-if [ -f /etc/fedora-release ]; then
-    echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (DNF)...${RESET}"
-    sudo dnf upgrade --refresh
-elif [ -f /etc/os-release ] && grep -q "solus" /etc/os-release; then
-    echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (Eopkg)...${RESET}"
-    sudo eopkg up
-elif [ -f /etc/os-release ] && grep -q "opensuse" /etc/os-release; then
-    echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (Zypper)...${RESET}"
-    sudo zypper ref
-    # REMOVIDO o -y para que ele pare nos conflitos e peça sua escolha (1, 2, 3...)
-    sudo zypper dup
-elif grep -q "ID=OpenMandriva Lx" /etc/os-release 2>/dev/null; then
-    echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (DNF)...${RESET}"
-    sudo dnf clean all
-    sudo dnf distro-sync
-elif grep -q "ID=linuxmint" /etc/os-release 2>/dev/null; then
-    echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (Apt)...${RESET}"
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get dist-upgrade
-elif grep -q "ID=debian" /etc/os-release 2>/dev/null; then
-    echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (Apt)...${RESET}"
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get dist-upgrade
-elif grep -q "ID=ubuntu" /etc/os-release 2>/dev/null; then
-    echo -e "${VERDE}[1/3] Atualizando pacotes do sistema (Apt)...${RESET}"
-    sudo apt-get update
-    sudo apt-get upgrade
-    sudo apt-get dist-upgrade
-    sudo snap refresh
+# Carrega as variáveis do sistema (/etc/os-release)
+if [ -f /etc/os-release ]; then
+    source /etc/os-release
 else
-    echo "Sistema não identificado."
+    echo -e "${VERMELHO}Arquivo /etc/os-release não encontrado. Não foi possível identificar o sistema.${RESET}"
+    exit 1
 fi
+
+# 1. Atualizar Pacotes do Sistema
+echo -e "${VERDE}[1/3] Atualizando pacotes do sistema ($NAME)...${RESET}"
+
+case "$ID" in
+    fedora)
+        sudo dnf upgrade --refresh -y
+        ;;
+    solus)
+        sudo eopkg up -y
+        ;;
+    opensuse-tumbleweed|opensuse-leap|opensuse)
+        sudo systemctl stop --now packagekit 2>/dev/null || true
+        sudo zypper ref
+        sudo zypper dup -y
+        ;;
+    openmandriva)
+        sudo dnf clean all
+        sudo dnf distro-sync -y
+        ;;
+    ubuntu)
+        sudo apt-get update
+        sudo apt-get dist-upgrade -y
+        if command -v snap &> /dev/null; then
+            sudo snap refresh
+        fi
+        ;;
+    debian|linuxmint|pop)
+        sudo apt-get update
+        sudo apt-get dist-upgrade -y
+        ;;
+    *)
+        echo -e "${VERMELHO}Distribuição ($ID) não mapeada explicitamente para update.${RESET}"
+        ;;
+esac
 
 # 2. Atualizar Flatpaks
 if command -v flatpak &> /dev/null; then
@@ -56,37 +73,54 @@ if command -v flatpak &> /dev/null; then
     flatpak update -y
     flatpak uninstall --unused -y
 fi
-# 3. Limpeza de Cache e Logs
-    echo -e " "
-    echo -e "${VERDE}[3/3] Iniciando limpeza de primavera...${RESET}"
 
-# Limpa cache do gerenciador de pacotes
-if [ -f /etc/fedora-release ]; then
-    sudo dnf clean all
-elif [ -f /etc/os-release ] && grep -q "solus" /etc/os-release; then
-    sudo eopkg delete-cache # Deletar cache
-    sudo eopkg rmo # Remover pacotes orfãos
-elif [ -f /etc/os-release ] && grep -q "opensuse" /etc/os-release; then
-    sudo zypper clean -a
-elif grep -q "ID=linuxmint" /etc/os-release 2>/dev/null; then
-    sudo apt-get autoremove -y
-    sudo apt-get autoclean
-elif grep -q "ID=ubuntu" /etc/os-release 2>/dev/null; then
-    sudo apt-get autoremove -y
-    sudo apt-get autoclean
-elif grep -q "ID=debian" /etc/os-release 2>/dev/null; then
-    sudo apt-get autoremove -y
-    sudo apt-get autoclean
-fi
+# 3. Limpeza de Cache e Logs
+echo -e " "
+echo -e "${VERDE}[3/3] Iniciando limpeza de primavera...${RESET}"
+
+case "$ID" in
+    fedora|openmandriva)
+        sudo dnf clean all
+        ;;
+    solus)
+        sudo eopkg delete-cache
+        sudo eopkg rmo -y
+        ;;
+    opensuse-tumbleweed|opensuse-leap|opensuse)
+        sudo zypper clean -a
+        ;;
+    debian|ubuntu|linuxmint|pop)
+        sudo apt-get autoremove -y
+        sudo apt-get autoclean
+        ;;
+esac
 
 # Limpa logs antigos (mantém apenas os últimos 2 dias)
+echo -e "${VERDE}Limpando logs com mais de 2 dias...${RESET}"
 sudo journalctl --vacuum-time=2d
 
 # Limpa cache de miniaturas do usuário
+echo -e "${VERDE}Limpando cache de thumbnails...${RESET}"
 rm -rf ~/.cache/thumbnails/*
-    echo -e " "
-    echo -e "${AZUL}--- Sistema Atualizado e Limpo! ---${RESET}"
-    echo -e " "
+
+echo -e " "
+echo -e "${AZUL}--- Sistema Atualizado e Limpo! ---${RESET}"
+echo -e " "
+
+if command -v fastfetch &> /dev/null; then
     fastfetch
+fi
 
+# Pergunta sobre o reboot
+echo -e " "
+echo -e -n "${VERDE}Tudo pronto! Deseja reiniciar o sistema agora? (s/n): ${RESET}"
+read RESPOSTA
 
+RESPOSTA=$(echo "$RESPOSTA" | tr '[:upper:]' '[:lower:]')
+
+if [[ "$RESPOSTA" =~ ^(s|sim|y|yes)$ ]]; then
+    echo -e "\n${VERDE}Reiniciando o sistema :)${RESET}\n"
+    sudo reboot
+else
+    echo -e "\n${VERDE}Lembre-se de reiniciar mais tarde para aplicar todas as alterações :)${RESET}\n"
+fi
