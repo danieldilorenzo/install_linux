@@ -1,15 +1,23 @@
 #!/bin/bash
 #
-# Rodar no terminal
-# cat /etc/os-release
-
-
-
-#!/bin/bash
+# ======================================
+# ||                                  ||
+# || SCRIPT DE ATUALIZAÇÃO UNIVERSAL  ||
+# ||                                  ||
+# ======================================
 #
+# Para pegar o id da distro linux, rodar no terminal
+#
+# cat /etc/os-release
 # Script de Atualização Universal
 #
-
+# Distros compatíveis com esse script
+#
+# Debian e baseadas
+# openSUSE e baseadas
+# Arch Linux e baseadas
+# Fedora e baseadas
+#
 # Sair imediatamente se algum comando falhar
 set -e
 
@@ -36,10 +44,10 @@ echo -e "${VERDE}[1/3] Atualizando pacotes do sistema ($NAME)...${RESET}"
 
 case "$ID" in
     fedora)
-        sudo dnf upgrade --refresh -y
+        sudo dnf upgrade --refresh
         ;;
     solus)
-        sudo eopkg up -y
+        sudo eopkg up
         ;;
     opensuse-tumbleweed|opensuse-leap|opensuse)
         sudo systemctl stop --now packagekit 2>/dev/null || true
@@ -48,18 +56,29 @@ case "$ID" in
         ;;
     openmandriva)
         sudo dnf clean all
-        sudo dnf distro-sync -y
+        sudo dnf distro-sync
         ;;
     ubuntu)
         sudo apt-get update
-        sudo apt-get dist-upgrade -y
+        sudo apt-get dist-upgrade
         if command -v snap &> /dev/null; then
             sudo snap refresh
         fi
         ;;
     debian|linuxmint|pop)
         sudo apt-get update
-        sudo apt-get dist-upgrade -y
+        sudo apt-get dist-upgrade
+        ;;
+    arch)
+        echo -e "${AZUL}\nVeja as Latest News em archlinux.org para ver se não tem alguma necessidade de intervenção manual.\n${RESET}"
+        read -p "$(echo -e "${AZUL}Deseja continuar com a atualização do Arch? (s/n): ${RESET}")" RESPOSTA
+        RESPOSTA=$(echo "$RESPOSTA" | tr '[:upper:]' '[:lower:]')
+
+        if [[ "$RESPOSTA" =~ ^(s|sim)$ ]]; then
+            sudo pacman -Syyu
+        else
+            echo -e "${VERMELHO}\nAtualização do sistema pulada pelo usuário. Prosseguindo com o restante...${RESET}"
+        fi
         ;;
     *)
         echo -e "${VERMELHO}Distribuição ($ID) não mapeada explicitamente para update.${RESET}"
@@ -69,14 +88,14 @@ esac
 # 2. Atualizar Flatpaks
 if command -v flatpak &> /dev/null; then
     echo -e " "
-    echo -e "${VERDE}[2/3] Atualizando Flatpaks...${RESET}"
+    echo -e "${VERDE}\n[2/3] Atualizando Flatpaks...${RESET}"
     flatpak update -y
     flatpak uninstall --unused -y
 fi
 
 # 3. Limpeza de Cache e Logs
 echo -e " "
-echo -e "${VERDE}[3/3] Iniciando limpeza de primavera...${RESET}"
+echo -e "${VERDE}\n[3/3] Iniciando limpeza de primavera...${RESET}"
 
 case "$ID" in
     fedora|openmandriva)
@@ -88,6 +107,24 @@ case "$ID" in
         ;;
     opensuse-tumbleweed|opensuse-leap|opensuse)
         sudo zypper clean -a
+        ;;
+    arch)
+        # Remove pacotes órfãos (não explicitamente instalados e sem dependências)
+        if pacman -Qdtq &> /dev/null; then
+            echo -e "${AZUL}Removendo pacotes órfãos...${RESET}"
+            sudo pacman -Rns $(pacman -Qtdq) --noconfirm
+        else
+            echo -e "${AZUL}Nenhum pacote órfão encontrado.${RESET}"
+        fi
+
+        # Limpa o cache antigo de pacotes do pacman (mantém apenas as versões atuais e a anterior)
+        if command -v paccache &> /dev/null; then
+            echo -e "${AZUL}Limpando cache antigo do Pacman (mantendo as 2 últimas versões)...${RESET}"
+            sudo paccache -r
+        else
+            echo -e "${AZUL}Limpando cache do Pacman (removendo pacotes desinstalados)...${RESET}"
+            sudo pacman -Sc --noconfirm
+        fi
         ;;
     debian|ubuntu|linuxmint|pop)
         sudo apt-get autoremove -y
@@ -111,18 +148,17 @@ if command -v fastfetch &> /dev/null; then
     fastfetch
 fi
 
-# Pergunta sobre desligar ou reiniciar
+# Pergunta sobre o reboot
 echo -e " "
-echo -e -n "${VERDE}Tudo pronto! Deseja desligar ou reiniciar o sistema agora? (d/r/n): ${RESET}"
+echo -e -n "${AZUL}\n\nTudo pronto! Deseja desligar ou reiniciar o sistema agora? (d/r/n): ${RESET}"
 read RESPOSTA
 
-# Converte a resposta para minúsculas
 RESPOSTA=$(echo "$RESPOSTA" | tr '[:upper:]' '[:lower:]')
 
-if [[ "$RESPOSTA" =~ ^(d|desligar|shutdown)$ ]]; then
-    sudo shutdown now
-elif [[ "$RESPOSTA" =~ ^(r|reiniciar|reboot)$ ]]; then
+if [[ "$RESPOSTA" =~ ^(d|D)$ ]]; then
+    sudo shutdown
+elif [[ "$RESPOSTA" =~ ^(r|R)$ ]]; then
     sudo reboot
 else
-    echo -e "\n${VERDE}Lembre-se de reiniciar ou desligar mais tarde para aplicar todas as alterações :)${RESET}\n"
+    echo -e "\n${AZUL}Lembre-se de reiniciar mais tarde para aplicar todas as alterações :)${RESET}\n"
 fi
