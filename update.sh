@@ -40,7 +40,7 @@ else
 fi
 
 # 1. Atualizar Pacotes do Sistema
-echo -e "${VERDE}[1/3] Atualizando pacotes do sistema ($NAME)...${RESET}"
+echo -e "${VERDE}[1/4] Atualizando pacotes do sistema ($NAME)...${RESET}"
 
 case "$ID" in
     fedora)
@@ -75,7 +75,7 @@ case "$ID" in
         RESPOSTA=$(echo "$RESPOSTA" | tr '[:upper:]' '[:lower:]')
 
         if [[ "$RESPOSTA" =~ ^(s|sim)$ ]]; then
-            sudo pacman -Syyu
+            sudo pacman -Syu
         else
             echo -e "${VERMELHO}\nAtualização do sistema pulada pelo usuário. Prosseguindo com o restante...${RESET}"
         fi
@@ -88,14 +88,14 @@ esac
 # 2. Atualizar Flatpaks
 if command -v flatpak &> /dev/null; then
     echo -e " "
-    echo -e "${VERDE}\n[2/3] Atualizando Flatpaks...${RESET}"
+    echo -e "${VERDE}\n[2/4] Atualizando Flatpaks...${RESET}"
     flatpak update -y
     flatpak uninstall --unused -y
 fi
 
 # 3. Limpeza de Cache e Logs
 echo -e " "
-echo -e "${VERDE}\n[3/3] Iniciando limpeza de primavera...${RESET}"
+echo -e "${VERDE}\n[3/4] Iniciando limpeza de primavera...${RESET}"
 
 case "$ID" in
     fedora|openmandriva)
@@ -132,7 +132,29 @@ case "$ID" in
         ;;
 esac
 
+# Atualiza o bootloader
+echo -e " "
+echo -e "${VERDE}\n[4/4] Atualizando bootloader...${RESET}"
+
+if command -v clr-boot-manager >/dev/null 2>&1; then
+        echo "Atualizando bootloader do Solus (clr-boot-manager)..."
+        sudo clr-boot-manager update
+    elif command -v grub-mkconfig >/dev/null 2>&1 && [ -d /boot/grub ]; then
+        echo "Atualizando GRUB (Arch)..."
+        sudo grub-mkconfig -o /boot/grub/grub.cfg
+    elif command -v grub2-mkconfig >/dev/null 2>&1 && [ -d /boot/grub2 ]; then
+        echo "Atualizando GRUB2 (Fedora/openSUSE)..."
+        sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    elif command -v bootctl >/dev/null 2>&1 && bootctl is-installed >/dev/null 2>&1; then
+        echo "Atualizando systemd-boot..."
+        sudo bootctl update
+    else
+        echo "Nenhum gerenciador de boot ativo detectado."
+    fi
+
 # Limpa logs antigos (mantém apenas os últimos 2 dias)
+
+echo -e " "
 echo -e "${VERDE}Limpando logs com mais de 2 dias...${RESET}"
 sudo journalctl --vacuum-time=2d
 
